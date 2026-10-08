@@ -1,0 +1,1804 @@
+<!doctype html>
+<!--
+  asa-rebuild-v1: "Search to Pro", Apple Ads x Onboarding, for INTVL.
+  Built on the asa-rebuild-v1 template (engine unchanged); screens, copy and ideas carried over from the earlier
+  volume (eddieatadapty.github.io/intvl-flow-rebuild/), rewritten per Apple Ads keyword.
+  Keyword flows are keyed "a" (kyro, Japan) and "b" (kyro: 영토 점령 러닝 게임, Korea).
+  URL: ?open=proto lands on the prototype, &step=<screen-id> opens both phones there,
+       ?embed=1&flow=a&step=<id> renders one phone alone (in its keyword's language unless &lang= is given).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<title>Search to Pro · INTVL</title>
+<link rel="icon" href="assets/brand/appstore-icon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Inter+Tight:ital,wght@1,800;1,900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* BRAND:START — screen tokens --b-* from intvl.com.au CSS and pixels sampled off their App Store screenshots
+   (carried over from the earlier volume); shell tokens in INTVL's palette */
+:root{
+  color-scheme: only light;
+  --b-primary:#50f82e;               /* CTA green — intvl.com.au + SAVE button, shot 3 */
+  --b-primary-ink:#0f170d;           /* dark text on green */
+  --b-bg:#ffffff;                    /* their white cards and sheets */
+  --b-surface:#eefeea;               /* light green tint (rivals note box, shot 7) */
+  --b-sel:#b9fcab;                   /* selected pill / row */
+  --b-ink:#0f170d;                   /* primary text */
+  --b-ink2:rgba(15,23,13,.55);       /* secondary text */
+  --b-line:#e9e9e9;                  /* borders, grab bars */
+  --b-soft:#f5f5f5;                  /* tool buttons, toggles */
+  --b-dark:#0f170d;                  /* CONTINUE button, dark sheets, theme colour */
+  --b-deep:#103209;                  /* deep green (site) */
+  --b-gtext:#2d9917;                 /* green text on white (LOOP CLOSED) */
+  --b-light:#96fb82;                 /* light end of their green bars */
+  --b-yellow:#fae20e;                /* crown / podium yellow, shot 5 */
+  --b-accent2:#fe6f64;               /* rival red (site) */
+  --b-grad:linear-gradient(90deg,#96fb82,#50f82e); /* their rivals bar */
+  --b-radius:16px;
+  --b-pill:999px;
+  /* Geist = their site font; Inter Tight Black Italic stands in for the licensed display face on their listing;
+     Noto Sans JP / KR carry the Japanese and Korean screens */
+  --b-font:'Geist','Noto Sans JP','Noto Sans KR',-apple-system,system-ui,sans-serif;
+  --b-mono:'Geist Mono','Noto Sans JP','Noto Sans KR',ui-monospace,monospace;
+  --b-disp:'Inter Tight','Geist','Noto Sans JP','Noto Sans KR',-apple-system,sans-serif;
+  --r-ctl:14px; --r-card:16px; --r-media:16px;
+  /* ---- the report shell, in INTVL's own palette ---- */
+  --bg:#F4F6F3; --bg2:#FFFFFF; --surf:#FFFFFF;
+  --hair:rgba(15,23,13,.09); --hair2:rgba(15,23,13,.16);
+  --ink:#0F170D; --ink2:#3B4637; --ink3:#7A8476;
+  --accent:#103209; --accent-lift:#2D9917; --hi:#50F82E;
+  --panel:#FFFFFF; --panel-ink:#0F170D; --panel-muted:#65705F; --panel-line:#E6EAE3;
+  --accent-ink:#206312;
+}
+html[lang=ko]{--b-font:'Geist','Noto Sans KR','Noto Sans JP',-apple-system,system-ui,sans-serif;
+  --b-mono:'Geist Mono','Noto Sans KR','Noto Sans JP',ui-monospace,monospace;
+  --b-disp:'Inter Tight','Geist','Noto Sans KR','Noto Sans JP',-apple-system,sans-serif}
+/* BRAND:END */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);
+  font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:700px){.wrap{padding:0 20px}}
+
+/* ============ top bar ============ */
+.nav{position:sticky;top:0;z-index:70;background:rgba(243,246,248,.86);backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid var(--hair)}
+.nav-in{max-width:1080px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;gap:18px}
+@media(max-width:700px){.nav-in{padding:0 20px;gap:12px}}
+.nav-brand{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;letter-spacing:-.01em}
+.nav-brand .mk{width:26px;height:26px;flex:none;display:block;border-radius:7px}
+.nav-brand span{color:var(--ink2);font-weight:500}
+.nav-brand b{color:var(--ink);font-weight:600}
+.nav-links{margin-left:auto;display:flex;gap:2px;align-items:center}
+.nav-links button{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink3);transition:.16s}
+.nav-links button:hover{color:var(--ink)}
+.nav-links button.on{color:var(--ink);background:#fff;box-shadow:0 1px 4px rgba(19,49,76,.08)}
+@media(max-width:640px){.nav-brand span{display:none}}
+
+.view{display:none}
+.view.on{display:block}
+
+/* ============ hero ============ */
+.hero{padding:104px 0 0;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-340px;left:50%;transform:translateX(-50%);
+  width:1100px;height:640px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(80,248,46,.14),transparent 72%)}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(40% 50% at 8% 20%,rgba(80,248,46,.12),transparent 70%),
+   radial-gradient(38% 45% at 92% 18%,rgba(15,23,13,.08),transparent 70%)}
+.hero>*{position:relative;z-index:1}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-lift);margin-bottom:26px}
+.hero h1{font-size:76px;line-height:.98;font-weight:700;letter-spacing:-.045em;margin:0 0 24px}
+@media(max-width:820px){.hero h1{font-size:50px}.hero{padding-top:70px}}
+.hero .lede{font-size:20px;line-height:1.5;font-weight:400;color:var(--ink2);max-width:600px;margin:0 auto;letter-spacing:-.012em}
+@media(max-width:820px){.hero .lede{font-size:17px}}
+.hero .meta{margin-top:30px;font-size:12.5px;color:var(--ink3);letter-spacing:.02em}
+.hero .meta b{color:var(--ink2);font-weight:600}
+
+.stats{display:flex;justify-content:center;gap:0;margin:70px auto 0;max-width:760px;
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.stat{flex:1;padding:26px 14px;text-align:center;border-left:1px solid var(--hair)}
+.stat:first-child{border-left:none}
+.stat b{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.stat span{display:block;font-size:11.5px;color:var(--ink3);margin-top:5px;line-height:1.35}
+@media(max-width:700px){.stat b{font-size:19px}.stat{padding:18px 8px}}
+
+.proof{max-width:760px;margin:0 auto;padding:30px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:26px;text-align:left}
+@media(max-width:700px){.proof{grid-template-columns:1fr;gap:20px;padding-top:24px}}
+.proof-k{grid-column:1/-1;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);text-align:center;margin-bottom:-6px}
+.proof-i{display:flex;gap:12px;align-items:flex-start}
+.proof-i .tick{width:18px;height:18px;flex:none;margin-top:3px;border-radius:50%;background:rgba(80,248,46,.24);
+  display:grid;place-items:center}
+.proof-i .tick svg{width:10px;height:10px;stroke:var(--accent-lift);stroke-width:3;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
+.proof-i p{font-size:14px;line-height:1.55;color:var(--ink2);margin:0}
+.proof-i p b{color:var(--ink);font-weight:700}
+
+.sec{padding:96px 0}
+.sec-k{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.sec h2{font-size:38px;line-height:1.14;font-weight:700;letter-spacing:-.035em;margin:0 0 20px;max-width:680px}
+@media(max-width:820px){.sec h2{font-size:29px}.sec{padding:64px 0}}
+.sec p.body{font-size:17px;line-height:1.66;color:var(--ink2);max-width:640px;margin:0 0 18px;letter-spacing:-.008em}
+.sec p.body b{color:var(--ink);font-weight:600}
+.rule{height:1px;background:var(--hair);margin:0}
+
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;max-width:820px}
+@media(max-width:760px){.notes{grid-template-columns:1fr}}
+.note{background:var(--surf);border:1px solid var(--hair);box-shadow:0 2px 10px rgba(19,49,76,.04);border-radius:16px;padding:24px 26px}
+.note h4{font-size:15px;font-weight:700;letter-spacing:-.015em;margin:0 0 8px}
+.note p{font-size:14px;line-height:1.6;color:var(--ink2);margin:0}
+
+.ideas{display:flex;flex-direction:column;gap:0;margin-top:14px;border-top:1px solid var(--hair)}
+.idea{display:grid;grid-template-columns:52px 1fr 180px;gap:26px;align-items:start;
+  padding:30px 4px;border-bottom:1px solid var(--hair);text-align:left;width:100%;transition:.18s}
+.idea:hover{background:rgba(255,255,255,.7)}
+@media(max-width:780px){.idea{grid-template-columns:38px 1fr;gap:16px}}
+.idea .no{font-size:13px;font-weight:700;color:var(--ink3);padding-top:4px;letter-spacing:.02em}
+.idea h3{font-size:21px;line-height:1.25;font-weight:700;letter-spacing:-.024em;margin:0 0 7px}
+@media(max-width:820px){.idea h3{font-size:18px}}
+.idea p{font-size:14.5px;line-height:1.6;color:var(--ink2);margin:0;max-width:540px}
+.idea .out{text-align:right;padding-top:3px}
+@media(max-width:780px){.idea .out{grid-column:2;text-align:left;padding-top:12px}}
+.idea .out b{display:block;font-size:19px;font-weight:700;letter-spacing:-.025em;color:var(--accent-lift);white-space:nowrap}
+.idea .out span{display:block;font-size:10.5px;color:var(--ink3);margin-top:3px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.idea .seeit{display:inline-flex;align-items:center;gap:5px;margin-top:11px;font-size:12.5px;
+  font-weight:600;color:var(--accent-lift)}
+.idea .seeit svg{width:12px;height:12px}
+
+.band{background:var(--surf);border:1px solid var(--hair);border-radius:28px;box-shadow:0 2px 10px rgba(19,49,76,.04);padding:40px 44px;margin-top:44px;
+  display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+@media(max-width:700px){.band{padding:28px 24px;gap:22px}}
+.band .lab{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.band .txt{flex:1;min-width:240px}
+.band .txt p{font-size:15.5px;line-height:1.6;color:var(--ink2);margin:0}
+.band .nums{display:flex;gap:34px}
+.band .nums div b{display:block;font-size:30px;font-weight:700;letter-spacing:-.035em;color:var(--accent-lift)}
+.band .nums div span{display:block;font-size:11px;color:var(--ink3);margin-top:2px;letter-spacing:.04em;
+  text-transform:uppercase;font-weight:600}
+
+.cta-row{display:flex;justify-content:center;margin-top:52px;align-items:center;gap:22px;flex-wrap:wrap}
+.bigbtn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;
+  font-size:15px;font-weight:700;letter-spacing:-.01em;padding:15px 26px;border-radius:30px;transition:.16s}
+.bigbtn:hover{filter:brightness(1.06)}
+.bigbtn svg{width:15px;height:15px}
+
+.foot{border-top:1px solid var(--hair);padding:36px 0 70px;font-size:12.5px;line-height:1.6;color:var(--ink3)}
+
+/* ============ prototype stage ============ */
+.stage{display:grid;grid-template-columns:minmax(440px,1fr) minmax(400px,470px);gap:0;
+  align-items:start;min-height:calc(100vh - 58px)}
+@media(max-width:1080px){.stage{grid-template-columns:1fr}}
+.phonecol{padding:34px 24px 46px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.panelcol{border-left:1px solid var(--hair);background:var(--panel);color:var(--panel-ink);
+  min-height:calc(100vh - 58px);position:sticky;top:58px;max-height:calc(100vh - 58px);overflow-y:auto}
+@media(max-width:1080px){.panelcol{position:static;max-height:none;border-left:none;border-top:1px solid var(--hair)}}
+
+.phone{position:relative;width:390px;height:844px;flex:none;background:#000;border:11px solid #000;
+  border-radius:46px;box-shadow:0 0 0 1.5px #D3DAE0,0 34px 70px -22px rgba(19,49,76,.35)}
+.phone-in{position:absolute;inset:0;border-radius:36px;overflow:hidden;background:var(--b-bg);color-scheme:only light}
+.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:104px;height:30px;background:#000;
+  border-radius:16px;z-index:60;pointer-events:none}
+.sbar{position:absolute;top:0;left:0;right:0;height:50px;z-index:55;pointer-events:none;display:flex;
+  align-items:center;justify-content:space-between;padding:14px 28px 0 34px;font:600 15px/1 -apple-system,BlinkMacSystemFont,sans-serif;color:#111;transition:color .3s}
+.sbar.light{color:#fff}
+.sbar .glyphs{display:flex;gap:5px;align-items:center}
+.homebar{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:134px;height:5px;
+  border-radius:3px;background:#111;z-index:56;pointer-events:none;transition:background .3s}
+.homebar.light{background:rgba(255,255,255,.9)}
+.screenwrap{position:absolute;inset:0;overflow:hidden;background:var(--b-bg)}
+
+/* ============ phone screens ============ */
+/* engine: screen stack + slots (keep) */
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--b-bg);color:var(--b-ink);
+  font-family:var(--b-font);
+  transform:translateX(100%);transition:transform .36s cubic-bezier(.32,.72,0,1);z-index:10;will-change:transform}
+.scr.is-active{transform:translateX(0);z-index:20}
+.scr.is-past{transform:translateX(-24%)}
+.scr.sheet{transform:translateY(100%)}
+.scr.sheet.is-active{transform:translateY(0);z-index:30}
+.scr.nofx{transition:none}
+.scr-top{flex:none;padding:52px 0 0;position:relative;z-index:2}
+.scr-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;position:relative;z-index:2}
+.scr-body::-webkit-scrollbar{display:none}
+.scr-foot{flex:none;padding:10px 20px 30px;position:relative;z-index:2;background:var(--b-bg)}
+.scr-foot.hair{border-top:1px solid var(--b-line)}
+
+
+/* SCREENS:START (EDIT) — INTVL's components from the earlier volume, prefixed s-; colours only var(--b-*) (+ white/black alpha) */
+.scr{line-height:normal;font-size:16px;text-align:left;overflow:hidden}
+html[lang=ko] .scr{word-break:keep-all}
+/* INTVL's second and third families: Geist Mono for labels/buttons, the italic display face for headlines */
+.scr .mono{font-family:var(--b-mono)}
+.scr .dsp{font-family:var(--b-disp)}
+.s-dark{background:var(--b-dark)}
+.s-pad{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:56px 18px 26px;min-height:0}
+.s-top{display:flex;align-items:center;justify-content:space-between;height:34px;margin-bottom:6px;color:var(--b-ink)}
+.s-top.s-w{color:#fff}
+.s-back{white-space:nowrap;background:none;border:0;padding:0;font-weight:600;font-size:13px;letter-spacing:.05em;color:inherit;cursor:pointer;font-family:var(--b-mono)}
+.s-dh{font-weight:900;font-style:italic;font-size:40px;line-height:.94;letter-spacing:-.04em;text-transform:uppercase;margin:0;color:var(--b-ink)}
+.s-dh em{font-style:inherit;color:var(--b-primary)}
+.s-dh.s-w{color:#fff}
+/* Japanese and Korean: upright, as on their own Japan and Korea screenshots */
+html[lang=ja] .scr .s-dh,html[lang=ko] .scr .s-dh{font-style:normal;letter-spacing:-.02em;line-height:1.12;font-weight:900}
+html[lang=ja] .s-goal .s-dh{font-size:34px} html[lang=ja] .s-card .s-dh{font-size:28px}
+html[lang=ja] .s-pro .s-dh{font-size:31px} html[lang=ja] .s-pws .s-dh{font-size:30px}
+html[lang=ja] .s-ocard .s-dh{font-size:31px} html[lang=ja] .s-done .s-dh{font-size:42px}
+html[lang=ko] .s-card .s-dh{font-size:31px} html[lang=ko] .s-pws .s-dh{font-size:33px}
+.s-sub{margin:10px 0 0;font-size:15px;line-height:1.42;color:var(--b-ink2)}
+.s-sub.s-w{color:rgba(255,255,255,.72)}
+.s-sub b{color:var(--b-ink);font-weight:600}
+.s-cta{width:100%;border:0;border-radius:var(--b-pill);background:var(--b-primary);color:var(--b-primary-ink);font-weight:600;font-size:15px;letter-spacing:.06em;padding:19px 16px;cursor:pointer;font-family:var(--b-mono);flex:none}
+.s-dcta{background:var(--b-dark);color:#fff}
+.s-ic{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.s-lab{font-size:10.5px;letter-spacing:.08em;color:var(--b-ink2);text-transform:uppercase}
+
+/* intro */
+.s-photo{position:absolute;top:0;left:0;width:100%;height:430px;object-fit:cover;object-position:50% 20%;z-index:0}
+.s-fade{position:absolute;left:0;right:0;top:200px;height:232px;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0),var(--b-dark) 92%)}
+.s-intro{justify-content:flex-end}
+.s-logo{width:148px;height:auto;display:block;margin:0 0 22px}
+.s-intro .s-dh{font-size:50px}
+html[lang=ja] .s-intro .s-dh,html[lang=ko] .s-intro .s-dh{font-size:42px}
+.s-intro .s-cta{margin-top:26px}
+.s-fine{margin:14px 0 0;text-align:center;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.5)}
+
+/* activity sheet */
+.s-mapbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%;z-index:0}
+.s-scrim{position:absolute;inset:0;z-index:1;background:rgba(0,0,0,.35)}
+.s-sheet{position:absolute;left:0;right:0;bottom:0;z-index:3;background:var(--b-bg);border-radius:26px 26px 0 0;padding:12px 18px 34px}
+.s-grab{display:block;width:44px;height:4px;border-radius:4px;background:var(--b-line);margin:0 auto 18px}
+.s-h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--b-ink)}
+.s-opt{display:flex;align-items:center;gap:14px;width:100%;margin-top:10px;background:var(--b-bg);border:1.5px solid var(--b-line);border-radius:14px;padding:16px;font-weight:500;font-size:16px;color:var(--b-ink);text-align:left;cursor:pointer;font-family:var(--b-font)}
+.s-opt.on{background:var(--b-sel);border-color:var(--b-sel)}
+.s-radio{margin-left:auto;flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--b-line);background:var(--b-bg);position:relative}
+.s-opt.on .s-radio{border-color:var(--b-bg)}
+.s-opt.on .s-radio::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--b-ink)}
+.s-sheet .s-opt:first-of-type{margin-top:18px}
+
+/* goal */
+.s-prog{height:4px;border-radius:4px;background:var(--b-line);overflow:hidden;margin:2px 0 22px}
+.s-prog i{display:block;height:100%;background:var(--b-primary)}
+.s-goal .s-dh{font-size:42px}
+.s-goal .s-sub{margin-bottom:12px}
+.s-opt2 span{display:flex;flex-direction:column;gap:3px}
+.s-opt2 b{font-weight:600;font-size:16px}
+.s-opt2 small{font-size:13px;color:var(--b-ink2)}
+.s-opt2 .s-ic{width:24px;height:24px}
+
+/* route planner */
+.s-map{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 34%;z-index:0}
+.s-phead{position:relative;z-index:3;background:var(--b-bg);border-radius:0 0 24px 24px;padding:58px 14px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);color:var(--b-ink)}
+.s-stats{flex:1;display:flex;justify-content:center;gap:8px}
+.s-stat{display:flex;align-items:baseline;gap:3px;white-space:nowrap;font-size:9px;letter-spacing:.04em;color:var(--b-ink2)}
+.s-stat b{font-size:17px;font-weight:500;color:var(--b-ink);letter-spacing:-.02em}
+.s-stat .s-ic{width:11px;height:11px;align-self:center;color:var(--b-accent2)}
+.s-q{flex:none;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--b-ink);font-size:11px;font-weight:700;display:grid;place-items:center}
+.s-loopp{position:absolute;top:108px;left:0;right:0;margin:0 auto;width:max-content;z-index:3;background:var(--b-bg);border-radius:0 0 12px 12px;padding:4px 12px 6px;font-size:10px;letter-spacing:.04em;color:var(--b-gtext);display:flex;align-items:center;gap:5px}
+.s-loopp i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--b-gtext)}
+/* the area label over their map (label only; the map art is theirs) */
+.s-pin{position:absolute;top:146px;left:14px;z-index:3;display:flex;align-items:center;gap:6px;background:var(--b-dark);color:#fff;border-radius:var(--b-pill);padding:7px 13px 7px 9px;font-size:12.5px;font-weight:600;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.s-pin .s-ic{width:15px;height:15px;color:var(--b-primary);stroke-width:2}
+.s-pbot{position:absolute;left:0;right:0;bottom:0;z-index:3;background:var(--b-bg);border-radius:24px 24px 0 0;padding:20px 16px 28px;box-shadow:0 -6px 18px rgba(0,0,0,.16)}
+.s-coach .s-lab{color:var(--b-gtext);font-weight:600}
+.s-coach p{margin:6px 0 16px;font-size:15.5px;line-height:1.42;color:var(--b-ink)}
+.s-tools{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.s-tb{width:40px;height:40px;border-radius:50%;background:var(--b-soft);display:grid;place-items:center;color:var(--b-ink)}
+.s-tb .s-ic{width:18px;height:18px}
+.s-tb.s-off{color:var(--b-line)}
+.s-terr{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:14px;color:var(--b-ink)}
+.s-tog{width:50px;height:30px;border-radius:var(--b-pill);background:var(--b-soft);border:1.5px solid var(--b-line);position:relative;cursor:pointer;padding:0}
+.s-tog::after{content:"";position:absolute;top:2px;left:2px;width:23px;height:23px;border-radius:50%;background:var(--b-bg);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
+.s-tog.on{background:var(--b-primary);border-color:var(--b-primary)}
+.s-tog.on::after{left:22px}
+.s-draw{display:flex;align-items:center;gap:6px;background:var(--b-dark);color:#fff;border:0;border-radius:12px;padding:11px 16px;font-size:15px;font-weight:500;font-family:var(--b-font);margin-left:8px}
+.s-draw .s-ic{width:16px;height:16px}
+.s-terr,.s-draw{white-space:nowrap}
+html[lang=ja] .s-terr,html[lang=ko] .s-terr{font-size:12.5px}
+
+/* payoff */
+.s-zoom{position:absolute;top:0;left:0;width:100%;height:520px;object-fit:cover;z-index:0}
+.s-top .s-chip{background:rgba(0,0,0,.45);color:#fff;border-radius:var(--b-pill);padding:8px 13px}
+.s-you{position:absolute;top:220px;left:0;right:0;margin:0 auto;width:max-content;z-index:3;display:flex;align-items:center;gap:10px;background:var(--b-bg);border-radius:18px;padding:9px 16px 9px 9px;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.s-av{width:42px;height:42px;border-radius:50%;border:2.5px solid var(--b-primary);background:var(--b-deep);color:var(--b-primary);display:grid;place-items:center}
+.s-av .s-ic{width:20px;height:20px}
+.s-you b{display:block;font-size:17px;font-weight:600;color:var(--b-ink)}
+.s-you small{display:inline-flex;align-items:center;gap:4px;margin-top:3px;background:var(--b-sel);color:var(--b-deep);border-radius:6px;padding:2px 7px;font-size:10.5px;letter-spacing:.04em}
+.s-card{position:absolute;left:0;right:0;bottom:0;z-index:3;background:var(--b-bg);border-radius:28px 28px 0 0;padding:26px 20px 26px}
+.s-card .s-dh{font-size:34px}
+.s-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:20px 0 22px;padding-top:16px;border-top:1px solid var(--b-line)}
+.s-nums div{text-align:center}
+.s-nums b{display:block;margin-top:5px;font-size:18px;font-weight:500;color:var(--b-ink);white-space:nowrap}
+
+/* pro in game terms */
+.s-pro{padding-bottom:22px}
+.s-tagpro{background:var(--b-dark);color:var(--b-primary);border-radius:8px;padding:5px 9px;font-size:11px;letter-spacing:.08em}
+.s-pro .s-dh{font-size:38px;margin-top:4px}
+.s-rvs{display:flex;flex-direction:column;gap:9px;margin:16px 0 16px}
+.s-rv{background:var(--b-bg);border:1.5px solid var(--b-line);border-radius:var(--b-radius);padding:12px 14px 11px}
+.s-rv.s-first{border-color:var(--b-sel);background:var(--b-surface)}
+.s-rvh{display:flex;justify-content:space-between;align-items:center;font-size:15.5px;font-weight:600;color:var(--b-ink);margin-bottom:9px}
+.s-tag{display:none;background:var(--b-dark);color:var(--b-primary);border-radius:6px;padding:3px 7px;font-size:9.5px;letter-spacing:.08em}
+.s-rv.s-first .s-tag{display:inline-block}
+.s-bar{display:flex;height:20px}
+.s-bf{background:linear-gradient(90deg,var(--b-line),var(--b-sel));clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%);border-radius:6px 0 0 6px}
+.s-bp{flex:1;margin-left:-4px;background:var(--b-grad);clip-path:polygon(9px 0,100% 0,100% 100%,0 100%);border-radius:0 6px 6px 0}
+.s-rvv{display:flex;justify-content:space-between;margin-top:7px;font-size:11px;letter-spacing:.03em;color:var(--b-ink2)}
+.s-rvv span:last-child{color:var(--b-ink);font-weight:600}
+.s-rv p{margin:6px 0 0;font-size:13px;line-height:1.35;color:var(--b-ink2)}
+.s-pro .s-cta{margin-top:auto}
+
+/* paywall */
+.s-globe{position:absolute;top:0;left:0;width:100%;height:auto;z-index:0}
+.s-x{position:absolute;top:56px;right:16px;z-index:4;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:15px;cursor:pointer;font-family:var(--b-font)}
+.s-pwlogo{position:absolute;top:62px;left:20px;z-index:3;display:flex;align-items:center;gap:8px}
+.s-pwlogo img{width:92px;height:auto}
+.s-pwlogo span{background:var(--b-primary);color:var(--b-primary-ink);border-radius:6px;padding:3px 7px;font-size:11px;font-weight:600;letter-spacing:.08em}
+.s-area{position:absolute;top:112px;left:20px;z-index:3;display:flex;align-items:center;gap:6px;background:var(--b-bg);border-radius:var(--b-pill);padding:6px 12px;font-size:13px;color:var(--b-ink)}
+.s-area .s-ic{width:13px;height:13px;color:var(--b-gtext);fill:var(--b-primary)}
+.s-pws{position:absolute;left:0;right:0;bottom:0;top:max(160px,calc(100% - 548px));z-index:3;background:var(--b-bg);border-radius:28px 28px 0 0;padding:24px 18px 18px;display:flex;flex-direction:column}
+.s-pws .s-dh{font-size:37px}
+.s-proof{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:12px 0 0;font-size:11.5px;letter-spacing:.02em;color:var(--b-ink2)}
+.s-proof b{color:var(--b-ink);font-weight:600}
+.s-stars{color:var(--b-yellow);letter-spacing:1px;font-size:13px}
+.s-ticks{list-style:none;margin:18px 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
+.s-ticks li{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--b-ink)}
+.s-ticks i{flex:none;width:20px;height:20px;border-radius:50%;background:var(--b-sel);display:grid;place-items:center}
+.s-ticks .s-ic{width:13px;height:13px;stroke-width:2.4}
+.s-plan{display:flex;align-items:center;gap:12px;width:100%;margin-top:8px;background:var(--b-bg);border:1.5px solid var(--b-line);border-radius:14px;padding:12px 14px;color:var(--b-ink);text-align:left;cursor:pointer;font-family:var(--b-font)}
+.s-plan.on{background:var(--b-sel);border-color:var(--b-sel)}
+.s-plan .s-radio{margin-left:0}
+.s-plan.on .s-radio{border-color:var(--b-bg)}
+.s-plan.on .s-radio::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--b-ink)}
+.s-pn{flex:1;display:flex;flex-direction:column;gap:2px}
+.s-pn b{font-size:16px;font-weight:600}
+.s-pn small{font-size:12.5px;color:var(--b-ink2)}
+.s-pp{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.s-pp b{font-size:15px;font-weight:600;white-space:nowrap}
+.s-save{background:var(--b-dark);color:var(--b-primary);border-radius:6px;padding:3px 7px;font-size:9.5px;letter-spacing:.08em;white-space:nowrap}
+.s-plan1{margin-top:auto}
+.s-pws .s-cta{margin-top:14px}
+.s-pf{margin:9px 0 0;text-align:center;font-size:12px;color:var(--b-ink2)}
+.s-legal{display:flex;justify-content:center;gap:18px;margin-top:6px;font-size:11px;color:var(--b-ink2)}
+
+/* offer on close */
+.s-offer{background:rgba(0,0,0,.52)}
+.s-ocard{margin-top:auto;position:relative;z-index:2;background:var(--b-dark);color:#fff;border-radius:28px 28px 0 0;padding:12px 20px 30px}
+.s-ocard .s-grab{background:rgba(255,255,255,.22);margin-bottom:20px}
+.s-ocard .s-lab{color:var(--b-primary);font-weight:600}
+.s-ocard .s-dh{font-size:38px;margin-top:10px}
+.s-obox{display:flex;justify-content:space-between;align-items:center;margin:20px 0 8px;border:1.5px solid var(--b-primary);border-radius:var(--b-radius);padding:14px 16px;background:rgba(255,255,255,.04)}
+.s-obox small{display:block;font-size:10.5px;letter-spacing:.08em;color:var(--b-primary)}
+.s-obox b{display:block;margin-top:4px;font-size:17px;font-weight:600}
+.s-obox .s-op{text-align:right}
+.s-obox .s-op b{font-size:26px;font-weight:500;margin:0}
+.s-obox .s-op span{font-size:12px;color:rgba(255,255,255,.6)}
+.s-onote{margin:0 0 20px;font-size:13px;color:rgba(255,255,255,.6)}
+.s-no{display:block;margin:14px auto 0;background:none;border:0;color:rgba(255,255,255,.6);font-size:14px;cursor:pointer;font-family:var(--b-font)}
+
+/* confirmed */
+.s-done{justify-content:center;align-items:flex-start}
+.s-big{width:76px;height:76px;border-radius:50%;background:var(--b-primary);color:var(--b-primary-ink);display:grid;place-items:center;margin-bottom:26px}
+.s-big .s-ic{width:36px;height:36px;stroke-width:2.6}
+.s-done .s-dh{font-size:52px}
+.s-done .s-cta{margin-top:30px}
+/* SCREENS:END */
+
+
+/* prototype toolbar, walkthrough, QR */
+.tools{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:520px}
+.seg{display:inline-flex;align-items:center;background:#fff;border:1px solid #DCE2E7;border-radius:20px;padding:3px;gap:2px}
+.seg button{padding:6px 11px;border-radius:16px;font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);transition:.14s}
+.seg button.on{background:var(--ink);color:#fff}
+.demo-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:20px;background:var(--accent);color:#fff;
+  font:700 12px/1 'Plus Jakarta Sans',sans-serif}
+.demo-cap{width:390px;max-width:calc(100vw - 24px);background:#fff;border:1px solid var(--hair);border-radius:16px;padding:14px 14px 12px;
+  display:flex;align-items:center;gap:12px;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(19,49,76,.07)}
+.demo-cap .bar{position:absolute;left:0;top:0;right:0;height:3px;background:#EDF1F4}
+.demo-cap .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s linear}
+.demo-cap p{flex:1;font-size:13.5px;line-height:1.45;color:var(--ink);margin:0;font-weight:500}
+.demo-cap button{font:700 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);padding:7px 10px;border-radius:12px;border:1px solid #DCE2E7;flex:none}
+.finger{position:absolute;z-index:90;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(19,49,76,.26);
+  border:2px solid rgba(255,255,255,.95);box-shadow:0 4px 14px rgba(0,0,0,.25);pointer-events:none;opacity:0;left:50%;top:60%;
+  transition:left .32s cubic-bezier(.4,0,.2,1),top .32s cubic-bezier(.4,0,.2,1),opacity .2s,transform .15s}
+.finger.show{opacity:1}
+.finger.press{transform:scale(.78);background:rgba(19,49,76,.4)}
+.qr{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:10px 16px 10px 10px;text-align:left}
+.qr img{width:135px;height:135px;display:block;image-rendering:pixelated;border-radius:6px}
+.qr span{font-size:12.5px;line-height:1.45;color:var(--ink2)}
+.qr b{display:block;color:var(--ink);font-size:13.5px}
+@media(max-width:1080px){.qr{display:none}}
+
+#view-proto .tools{order:0} #view-proto .demo-cap{order:1} #view-proto .phone{order:2} #view-proto .chips{order:3}
+#view-proto .chiphint{order:4} #view-proto .qr{order:5}
+.cta-row .qr{order:2}
+/* on a phone: the prototype is the screen */
+@media(max-width:1px){
+  #view-proto .phonecol{padding:0 0 28px;gap:14px}
+  #view-proto .phone{width:100vw;height:calc(100svh - 58px);min-height:640px;border:0;border-radius:0;box-shadow:none;order:1}
+  #view-proto .phone-in{border-radius:0}
+  #view-proto .island,#view-proto .sbar,#view-proto .homebar{display:none}
+  #view-proto .scr-top{padding-top:12px}
+  #view-proto .scr--wel .scr-top{padding-top:0}
+  #view-proto .s-hero{height:300px}
+  #view-proto .scr-foot{padding-bottom:16px}
+  #view-proto .s-ltop{padding-top:10px}
+  #view-proto .tools{order:3;padding:0 12px}
+  #view-proto .demo-cap{position:fixed;left:12px;right:12px;bottom:12px;width:auto;max-width:none;z-index:95}
+  #view-proto .chips{order:4;padding:0 12px}
+  #view-proto .chiphint{order:5}
+}
+
+/* overview: walkthrough button */
+.herobtns{display:flex;justify-content:center;margin-top:30px}
+.ghostbtn{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--hair2);color:var(--ink);font-size:14px;
+  font-weight:700;padding:9px 20px 9px 9px;border-radius:30px;box-shadow:0 2px 12px rgba(19,49,76,.06);transition:.16s}
+.ghostbtn:hover{box-shadow:0 4px 18px rgba(19,49,76,.1)}
+.ghostbtn .pl{width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.ghostbtn .pl svg{width:12px;height:12px;fill:#fff;margin-left:2px}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:470px;margin:0 auto}
+.chip{padding:7px 13px;border-radius:20px;border:1px solid #DCE2E7;background:#fff;
+  font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);transition:.14s}
+.chip:hover{color:var(--ink);border-color:#C3CCD4}
+.chip.offer{border-style:dashed;border-color:var(--b-gtext);color:var(--accent-ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff;border-style:solid}
+.chiphint{text-align:center;font-size:11px;color:var(--ink3);margin:0;max-width:430px}
+
+/* ============ the short panel ============ */
+.pn{padding:30px 30px 60px}
+.pn-n{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.pn-n.ctx{color:var(--panel-muted)}
+.pn-t{font-size:23px;line-height:1.18;font-weight:700;letter-spacing:-.028em;margin:8px 0 0;color:var(--panel-ink)}
+.pn-hyp{font-size:15px;line-height:1.62;color:#2E3D4B;margin:16px 0 0}
+.pn-hyp b{font-weight:700;color:var(--panel-ink)}
+.pn-out{margin-top:22px;border-top:1px solid var(--panel-line);padding-top:18px}
+.pn-out .lab{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--panel-muted)}
+.pn-out .v{font-size:31px;font-weight:700;letter-spacing:-.035em;color:var(--accent-ink);margin-top:7px;line-height:1}
+.pn-kept{margin-top:22px;font-size:12.5px;line-height:1.55;color:var(--panel-muted)}
+.pn-kept b{color:#2E3D4B;font-weight:700}
+.pn-foot{font-size:11.5px;line-height:1.55;color:var(--panel-muted);border-top:1px solid var(--panel-line);
+  padding-top:14px;margin-top:26px}
+.pn-sep{height:1px;background:var(--panel-line);margin:26px 0}
+.hidden{display:none !important}
+
+/* ============ lavender mist page, lit like the Ads Manager research page ============ */
+:root{--bg:#F4F2FA}
+body{background:radial-gradient(60% 50% at 0% 0%,rgba(115,70,224,.08),transparent 70%),
+  radial-gradient(55% 45% at 100% 100%,rgba(232,101,15,.07),transparent 70%),#F4F2FA;background-attachment:fixed}
+.nav{background:rgba(244,242,250,.86)}
+.hero::after{background:radial-gradient(40% 50% at 8% 20%,rgba(115,70,224,.12),transparent 70%),
+   radial-gradient(38% 45% at 92% 18%,rgba(232,101,15,.07),transparent 70%)}
+/* ============ keyword colours (Adapty ASA orange / purple; change only on a clash with their brand) ============ */
+:root{--ka:#E8650F;--ka-bg:#FFF2E8;--ka-ink:#B44A05;--kb:#7346E0;--kb-bg:#F2EDFF;--kb-ink:#5A2FC4}
+
+/* ---- ASA block on the overview ---- */
+.asa{padding:76px 0 0}
+.asa-card{position:relative;overflow:hidden;border-radius:28px;background:#0C1B2C;color:#fff;padding:46px 48px;
+  display:grid;grid-template-columns:1fr 250px;gap:44px;align-items:center;box-shadow:0 30px 60px -30px rgba(12,27,44,.55)}
+.asa-card::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50% 70% at 0% 0%,rgba(115,70,224,.38),transparent 70%),radial-gradient(40% 60% at 100% 100%,rgba(232,101,15,.22),transparent 70%)}
+.asa-card>*{position:relative}
+.asa-card .sec-k{color:#B9A4FF;margin-bottom:14px}
+.asa-card h2{font-size:36px;line-height:1.12;font-weight:700;letter-spacing:-.035em;margin:0 0 18px;color:#fff}
+.asa-card h2 em{font-style:normal;background:linear-gradient(90deg,#FF9A4D,#A57CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.asa-card p{font-size:16.5px;line-height:1.66;color:rgba(255,255,255,.78);margin:0;max-width:600px}
+.asa-card p b{color:#fff;font-weight:700}
+.asa-card p,.kwcard .q,.kc .kk{word-break:keep-all}
+.asa-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;align-items:center}
+.asa-go{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,#7346E0,#9B6BFF);color:#fff;text-decoration:none;
+  font-size:16px;font-weight:700;letter-spacing:-.01em;padding:17px 28px;border-radius:32px;box-shadow:0 10px 30px -8px rgba(115,70,224,.7);transition:.16s}
+.asa-go:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.asa-go svg{width:16px;height:16px}
+.asa-alt{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:14.5px;font-weight:700;padding:15px 20px;border-radius:30px;
+  border:1px solid rgba(255,255,255,.22)}
+.asa-alt:hover{background:rgba(255,255,255,.08)}
+.asa-alt svg{width:13px;height:13px}
+.asa-stats{display:flex;flex-direction:column;gap:0;border-left:1px solid rgba(255,255,255,.14);padding-left:30px}
+.asa-stats div{padding:14px 0;border-top:1px solid rgba(255,255,255,.1)}
+.asa-stats div:first-child{border-top:none;padding-top:0}
+.asa-stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.asa-stats b.o{color:#FF9A4D} .asa-stats b.p{color:#B9A4FF}
+.asa-stats span{display:block;font-size:12.5px;color:rgba(255,255,255,.62);margin-top:6px;line-height:1.4}
+@media(max-width:860px){.asa-card{grid-template-columns:1fr;padding:34px 26px;gap:28px}.asa-stats{border-left:none;padding-left:0;flex-direction:row;gap:18px;flex-wrap:wrap}
+  .asa-stats div{border-top:none;padding:0;flex:1;min-width:120px}.asa-card h2{font-size:28px}.asa{padding-top:56px}}
+
+html,body{overflow-x:clip}
+.nav-links{gap:4px}
+.nav-links button{padding:10px 20px;font-size:15px;border-radius:11px}
+.nav-links button.on{box-shadow:0 1px 6px rgba(19,49,76,.12),0 0 0 1px rgba(19,49,76,.06)}
+@media(max-width:640px){.nav-links button{padding:8px 13px;font-size:13.5px}}
+/* ---- overview: keyword table + next steps ---- */
+.band-kw{margin-top:12px!important;padding-top:12px;border-top:1px solid var(--hair);font-size:14.5px!important}
+.band-kw b{color:#7346E0;font-weight:700}
+.kwsec,.next{margin-top:96px}
+.kwt{margin-top:28px;background:#fff;border:1px solid var(--hair);border-radius:22px;overflow:hidden;box-shadow:0 2px 10px rgba(19,49,76,.04)}
+.kwt-h,.kwt-r{display:grid;grid-template-columns:150px 1fr 1fr 28px;gap:20px;align-items:center;padding:16px 24px;text-align:left;width:100%}
+.kwt-h{background:#FAF9FD;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.kwt-h .f{color:var(--ka-ink);text-transform:none;letter-spacing:-.01em;font-size:14px;font-weight:800}
+.kwt-h .b{color:var(--kb-ink);text-transform:none;letter-spacing:-.01em;font-size:14px;font-weight:800}
+.kwt-h::after{content:''}
+.kwt-r{border-top:1px solid var(--hair);font-size:14.5px;line-height:1.45;color:var(--ink2);transition:.15s}
+.kwt-r:hover{background:#FAF9FD}
+.kwt-r .s{font-weight:700;color:var(--ink)}
+.kwt-r i{font-style:normal;color:var(--ink3);font-weight:700;transition:.15s}
+.kwt-r:hover i{color:var(--ink);transform:translateX(3px)}
+.kwhyp{display:inline-block;margin-left:6px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ka-ink);
+  border:1px dashed rgba(232,101,15,.5);border-radius:5px;padding:1px 6px;vertical-align:2px}
+@media(max-width:760px){.kwt-h{display:none}.kwt-r{grid-template-columns:1fr;gap:6px;padding:16px 20px}.kwt-r i{display:none}
+  .kwt-r span[data-k]::before{content:attr(data-k);font-weight:700}
+  .kwt-r span.ka::before{color:var(--ka-ink)} .kwt-r span.kb::before{color:var(--kb-ink)}}
+.next-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.next-steps div{background:#fff;border:1px solid var(--hair);border-radius:20px;padding:24px 24px 26px;position:relative}
+.next-steps div::before{content:'';position:absolute;left:24px;right:24px;top:0;height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,#E8650F,#7346E0)}
+.next-steps b{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7346E0}
+.next-steps h4{font-size:19px;font-weight:700;letter-spacing:-.02em;margin:8px 0 8px}
+.next-steps p{font-size:14px;line-height:1.55;color:var(--ink2);margin:0}
+@media(max-width:760px){.next-steps{grid-template-columns:1fr}}
+.proof2{max-width:860px;grid-template-columns:1fr 1fr;gap:34px;padding-top:34px}
+.proof2 .proof-col{display:flex;flex-direction:column;gap:14px}
+.proof2 .proof-k{grid-column:auto;text-align:left;margin-bottom:2px}
+.proof2 .asa-col{border-left:1px solid var(--hair);padding-left:34px}
+.proof2 .asa-col .proof-k{color:#7346E0}
+.proof2 .asa-col .tick{background:rgba(115,70,224,.14)}
+.proof2 .asa-col .tick svg{stroke:#7346E0}
+@media(max-width:700px){.proof2{grid-template-columns:1fr;gap:26px}.proof2 .asa-col{border-left:none;padding-left:0}}
+/* ---- nav tools (prototype only) ---- */
+.nav-tools{display:none;align-items:center;gap:8px;margin-left:auto}
+body.proto .nav-tools{display:flex}
+body.proto .nav-links{margin-left:14px}
+.nav-in{max-width:none}
+#view-over .wrap{max-width:1080px}
+body:not(.proto) .nav-in{max-width:1080px}
+.hdemo-btn{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;font:700 12.5px/1 'Plus Jakarta Sans',sans-serif;
+  padding:9px 15px;border-radius:20px;transition:.16s;white-space:nowrap}
+.hdemo-btn:hover{filter:brightness(1.06)}
+.hdemo-btn svg{width:11px;height:11px;fill:#fff}
+@media(max-width:899px){body.proto .nav-tools{display:none}}
+
+/* ---- the two-phone stage ---- */
+html:not(.embed) #view-proto .stage{display:none}
+#view-proto.on{display:block}
+.p3{display:grid;grid-template-columns:minmax(0,1fr) 360px;height:calc(100vh - 58px);height:calc(100svh - 58px)}
+.p3-stage{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;padding:18px 20px 12px}
+.p3-mtools{display:none;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.p3-mtog{display:none;margin:0 auto 12px;background:#fff;border:1px solid #DCE2E7;border-radius:22px;padding:3px;gap:3px}
+.p3-mtog button{padding:8px 16px;border-radius:18px;font:700 13px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2)}
+.p3-mtog button[data-one=a].on{background:var(--ka);color:#fff}
+.p3-mtog button[data-one=b].on{background:var(--kb);color:#fff}
+.duo{flex:1;min-height:0;display:flex;justify-content:center;align-items:center;gap:22px}
+.flow{display:flex;flex-direction:column;align-items:center;gap:10px}
+.kwcard{width:188px;flex:none;align-self:center;border-radius:16px;padding:16px 16px 18px;border:1px solid}
+.kwcard.ka{background:var(--ka-bg);border-color:rgba(232,101,15,.25)} .kwcard.kb{background:var(--kb-bg);border-color:rgba(115,70,224,.25)}
+.kwcard .k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.kwcard .q{display:flex;align-items:flex-start;gap:7px;font-size:16px;line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:9px 0 10px}
+.kwcard .q svg{width:15px;height:15px;flex:none;margin-top:3px}
+.kwcard.ka .q{color:var(--ka-ink)} .kwcard.kb .q{color:var(--kb-ink)}
+.kwcard p{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.kwcard .who{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:12px 0 4px}
+.kwpill{display:none;align-items:center;gap:7px;font-weight:800;font-size:13px;padding:7px 14px 7px 11px;border-radius:20px;white-space:nowrap}
+.kwpill svg{width:13px;height:13px}
+.kwpill.ka{background:var(--ka-bg);color:var(--ka-ink)} .kwpill.kb{background:var(--kb-bg);color:var(--kb-ink)}
+.kwpill small{font-weight:600;opacity:.7;font-size:11px}
+.p3.top .kwcard{display:none} .p3.top .kwpill{display:inline-flex}
+.pbox{position:relative;flex:none}
+.pbox iframe{position:absolute;top:0;left:0;width:390px;height:844px;border:0;transform-origin:0 0;border-radius:46px;background:transparent}
+.pbox::after{content:'';position:absolute;inset:-5px;border-radius:52px;pointer-events:none;transition:box-shadow .2s}
+.flow.ka .pbox::after{box-shadow:0 0 0 3px var(--ka),0 30px 60px -28px rgba(232,101,15,.45)}
+.flow.kb .pbox::after{box-shadow:0 0 0 3px var(--kb),0 30px 60px -28px rgba(115,70,224,.45)}
+.p3-bar{flex:none;min-height:46px;display:flex;align-items:center;justify-content:center;margin-top:12px}
+.steps{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.step{position:relative;padding:8px 13px;border-radius:20px;border:1px solid #DCE2E7;background:#fff;
+  font:600 12px/1 'Plus Jakarta Sans',sans-serif;color:var(--ink2);transition:.14s}
+.step:hover{color:var(--ink);border-color:#C3CCD4}
+.step.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.step.diff::after{content:'';position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(90deg,var(--ka) 50%,var(--kb) 50%);box-shadow:0 0 0 2px var(--bg)}
+.hcap{display:flex;align-items:center;gap:14px;background:var(--ink);color:#fff;border-radius:16px;padding:10px 12px 10px 18px;max-width:760px;width:100%}
+.hcap p{flex:1;font-size:13.5px;line-height:1.4;font-weight:600;margin:0}
+.hcap .bar{width:64px;height:4px;border-radius:2px;background:rgba(255,255,255,.2);overflow:hidden;flex:none}
+.hcap .bar i{display:block;height:100%;width:0;background:var(--hi);transition:width .2s linear}
+.hcap button{font-size:12px;font-weight:700;padding:7px 13px;border-radius:14px;background:rgba(255,255,255,.14)}
+
+/* ---- panel ---- */
+.p3-panel{border-left:1px solid var(--hair);background:var(--panel);color:var(--panel-ink);overflow-y:auto;min-height:0}
+.p3-panel .pn{padding:24px 26px 40px}
+.sh{position:relative;overflow:hidden;border-radius:16px;margin-bottom:24px;background:#0C1B2C;color:#fff;
+  box-shadow:0 14px 30px -18px rgba(12,27,44,.6)}
+.sh::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 90% at 0% 0%,rgba(115,70,224,.42),transparent 70%),radial-gradient(60% 80% at 100% 100%,rgba(232,101,15,.22),transparent 70%)}
+.sh>*{position:relative}
+.sh summary{list-style:none;cursor:pointer;padding:15px 16px 14px}
+.sh summary::-webkit-details-marker{display:none}
+.sh .top{display:flex;align-items:flex-start;gap:10px}
+.sh .lab{flex:1;font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.sh .lab small{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#B9A4FF;margin-bottom:4px}
+.sh .more{flex:none;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.75);padding:5px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.2);white-space:nowrap}
+.sh[open] .more .o{display:none} .sh:not([open]) .more .c{display:none}
+.sh .lit{display:flex;align-items:center;gap:6px;margin-top:13px}
+.sh .lit button{width:30px;height:26px;border-radius:8px;font:800 11px/1 'Plus Jakarta Sans',sans-serif;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.45);transition:.2s}
+.sh .lit button:hover{color:#fff}
+.sh .lit button.on{background:var(--hi);color:#0F170D;box-shadow:0 0 0 3px rgba(80,248,46,.25),0 0 18px rgba(80,248,46,.5)}
+.sh .lit span{margin-left:auto;font-size:11px;font-weight:600;color:rgba(255,255,255,.6);white-space:nowrap}
+.sh ol{list-style:none;padding:0 16px 12px;margin:0}
+.sh li{display:flex;gap:10px;align-items:baseline;padding:9px 0;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.82);cursor:pointer}
+.sh li:hover{color:#fff}
+.sh li.on{color:#fff;font-weight:700}
+.sh li .n{font-weight:800;color:rgba(255,255,255,.4);font-size:11px;width:16px;flex:none}
+.sh li.on .n{color:var(--hi)}
+.sh li .t{flex:1}
+.sh li .o{font-weight:700;color:var(--hi);font-size:11.5px;white-space:nowrap}
+.pn-badge{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--panel-muted)}
+.pn-badge i{width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,var(--ka) 50%,var(--kb) 50%)}
+.pn-badge.same i{background:#C4CCD4}
+.kc{border-radius:14px;padding:15px 16px 15px 17px;margin-top:12px;border-left:4px solid}
+.kc.ka{background:var(--ka-bg);border-color:var(--ka)} .kc.kb{background:var(--kb-bg);border-color:var(--kb)}
+.kc .kk{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;letter-spacing:-.01em}
+.kc.ka .kk{color:var(--ka-ink)} .kc.kb .kk{color:var(--kb-ink)}
+.kc .kk svg{width:12px;height:12px}
+.kc p{font-size:13.5px;line-height:1.55;color:#2E3D4B;margin:7px 0 0}
+.kc p b{color:var(--panel-ink);font-weight:700}
+.kc .ko{display:flex;align-items:baseline;gap:8px;margin-top:10px;padding-top:9px;border-top:1px solid rgba(19,49,76,.08)}
+.kc .ko span{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--panel-muted)}
+.kc .ko b{font-size:15.5px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.kc.ka .ko b{color:var(--ka-ink)} .kc.kb .ko b{color:var(--kb-ink)}
+.kc .ko b.nc{font-size:13px;color:var(--panel-muted)}
+.hyptag{display:block;margin-top:10px;font-size:11.5px;line-height:1.45;font-weight:600;color:var(--ka-ink);background:#fff;border:1px dashed rgba(232,101,15,.45);border-radius:8px;padding:7px 9px}
+.hyptag b{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-right:4px}
+.pn-note{margin-top:14px;font-size:12.5px;line-height:1.55;color:#2E3D4B;background:#F4F2FA;border-radius:12px;padding:12px 14px}
+.pn-also{margin-top:20px;border-top:1px solid var(--panel-line);padding-top:16px}
+.pn-also .lab{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--panel-muted)}
+.pn-also .row{display:flex;gap:10px;align-items:baseline;margin-top:9px;font-size:13px;line-height:1.4;color:#2E3D4B;font-weight:600}
+.pn-also .row .o{margin-left:auto;font-weight:700;color:var(--accent-ink);white-space:nowrap;font-size:12.5px}
+.drawer-btn{display:none;position:fixed;right:16px;bottom:16px;z-index:80;background:var(--ink);color:#fff;
+  font:700 13px/1 'Plus Jakarta Sans',sans-serif;padding:13px 18px;border-radius:24px;box-shadow:0 10px 26px rgba(19,49,76,.32)}
+.drawer-btn i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:linear-gradient(90deg,var(--ka) 50%,var(--kb) 50%)}
+@media(max-width:1249px){
+  .p3{grid-template-columns:minmax(0,1fr)}
+  .p3-panel{position:fixed;top:58px;right:0;bottom:0;width:min(380px,92vw);transform:translateX(102%);transition:transform .25s;z-index:75;
+    box-shadow:-24px 0 50px rgba(19,49,76,.16)}
+  body.drawer .p3-panel{transform:none}
+  body.proto .drawer-btn{display:block}
+}
+@media(max-width:899px){ .p3-mtools{display:flex} }
+@media(max-width:759px){
+  .p3{height:auto;min-height:calc(100svh - 58px)}
+  .p3-stage{padding:14px 12px 80px}
+  .p3-mtog{display:inline-flex}
+  .p3.one .flow{display:none} .p3.one .flow.show{display:flex}
+  .kwcard{display:none!important} .kwpill{display:none!important}
+  .duo{flex:none}
+}
+
+/* ---- embed: the iframe is just the phone ---- */
+html.embed,html.embed body{background:transparent!important;overflow:hidden}
+html.embed .nav,html.embed #view-over,html.embed .p3,html.embed .drawer-btn,html.embed .tools,html.embed .chips,html.embed .chiphint,
+html.embed .qr,html.embed .panelcol,html.embed .demo-cap{display:none!important}
+html.embed .stage{display:block;min-height:0}
+html.embed .phonecol{padding:0;display:block}
+html.embed .phone{box-shadow:none}
+
+/* ---- App Store search screen (phone) ---- */
+.scr--as{background:#fff;font-family:-apple-system,BlinkMacSystemFont,'Plus Jakarta Sans',sans-serif}
+.as-bar{display:flex;align-items:center;gap:10px;padding:2px 14px 12px}
+.as-field{flex:1;display:flex;align-items:center;gap:7px;background:#EEEEF0;border-radius:11px;height:37px;padding:0 10px;font-size:16px;color:#111;min-width:0}
+.as-field svg{width:15px;height:15px;flex:none;color:#8E8E93}
+.as-field span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.as-clr{margin-left:auto;width:17px;height:17px;flex:none;border-radius:50%;background:#B4B4BA;color:#fff;font:700 10px/17px sans-serif;text-align:center;font-style:normal}
+.as-cancel{color:#0A7AFF;font-size:16px;flex:none}
+.as-ad{margin:2px 14px 0;padding:13px 12px 12px;border-radius:16px;background:#EEF4FE}
+.as-row{display:flex;gap:12px;align-items:center}
+.as-ic{width:64px;height:64px;border-radius:15px;flex:none;box-shadow:0 0 0 .5px rgba(0,0,0,.14)}
+.as-meta{flex:1;min-width:0}
+.as-meta b{display:block;font-size:15.5px;font-weight:600;color:#111;letter-spacing:-.01em;line-height:1.25}
+.as-meta .s{display:block;font-size:13px;color:#8E8E93;margin-top:1px}
+.as-meta .r{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;color:#8E8E93}
+.as-meta .r .adb{background:#0A7AFF;color:#fff;font-weight:700;font-size:10.5px;border-radius:4px;padding:1px 5px;line-height:1.4}
+.as-get{background:#0A7AFF;color:#fff;font-weight:700;font-size:15px;padding:6px 19px;border-radius:17px;flex:none;min-width:72px;transition:.2s}
+.as-get.open{background:#E4E9F2;color:#0A7AFF}
+.as-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}
+.as-shot{position:relative;aspect-ratio:9/17;border-radius:11px;overflow:hidden;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.14)}
+.as-shot img{position:absolute;left:0;right:0;bottom:0;width:100%;height:71%;object-fit:cover;display:block}
+.as-shot b{position:absolute;left:6px;right:6px;top:9px;color:#0F170D;font:900 italic 11.5px/1.02 'Inter Tight','Noto Sans JP','Noto Sans KR',sans-serif;text-align:center;letter-spacing:-.02em;text-transform:uppercase}
+.as-shot.dk{background:#0F170D}
+.as-shot.dk img{top:0;height:100%}
+.as-shot.dk::after{content:'';position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(rgba(15,23,13,0),rgba(15,23,13,.9))}
+.as-shot.dk b{top:auto;bottom:10px;color:#fff;z-index:2;font-size:13px;text-align:right}
+html[lang=ja] .as-shot b,html[lang=ko] .as-shot b{font-style:normal;text-transform:none;font-weight:800;font-size:10.5px;line-height:1.25;letter-spacing:-.01em}
+html[lang=ja] .as-shot.dk b,html[lang=ko] .as-shot.dk b{font-size:12px}
+.as-st{position:relative;display:inline-block;color:#D1D1D6;letter-spacing:1px;font-size:10.5px;margin-right:4px}
+.as-st i{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:#8E8E93;font-style:normal}
+.as-org{margin:16px 14px 0;opacity:.5}
+.as-sk{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #ECECEF}
+.as-sk i{width:52px;height:52px;border-radius:12px;background:#E6E8EC;flex:none}
+.as-sk div{flex:1}
+.as-sk span{display:block;height:10px;border-radius:5px;background:#E6E8EC;width:62%}
+.as-sk span+span{margin-top:7px;width:40%}
+.as-sk em{width:62px;height:28px;border-radius:14px;background:#EEF0F3;flex:none}
+</style>
+</head>
+<body>
+
+<!-- META (EDIT): what the overview, the two-phone host and the scripts read. kw.x.lang = the language that phone
+     starts in ("Local" on the host sends each phone its own). langs stay the three real languages. -->
+<script type="application/json" id="meta">
+{
+ "app": "INTVL",
+ "liveUrl": "https://eddieatadapty.github.io/intvl-asa-rebuild/",
+ "asaUrl": "",
+ "langs": [["en","EN","English"],["ja","JA","Japanese"],["ko","KO","Korean"]],
+ "langNote": "Japanese and Korean screens are our translation; your Japan and Korea listings are the source for the feature wording, and the app itself is in English today. Prices follow the language: EN shows your US App Store prices, JA your Japan prices, KO your Korea prices. The rating inside the app is your US App Store rating, labelled as such.",
+ "kw": {
+  "a": {"q": "kyro", "short": "Japan", "lang": "ja", "who": "A runner in Japan who typed the name of another run-and-claim-territory app into the App Store, and met your ad."},
+  "b": {"q": "kyro: 영토 점령 러닝 게임", "short": "Korea", "lang": "ko", "who": "A runner in Korea who typed that same app’s Korean listing name, word for word."}
+ },
+ "ideas": [
+  {"n": 1, "screen": "plan", "title": "Let people plan their first capture before the paywall", "short": "Plan the first capture before the paywall", "impact": "CR +10–20%", "il": "to purchase",
+   "what": "The full route planner is one of Pro’s three headline features, but a new player can’t value it before they’ve run. Draw one real loop in their area during onboarding (3.93 km, 0.9 km² inside, the loop on your own screenshot) so the game is concrete before you ask for money."},
+  {"n": 2, "screen": "claim", "title": "Ask how they want to play, then say it back", "short": "Ask how they want to play, then say it back", "impact": "CR +8–15%", "il": "to purchase",
+   "what": "Your listing already splits players: some chase the global leaderboard, others want their own suburb or city, some play for real prizes or their club. Ask, then name the answer on the payoff and in the paywall headline (“Rule Shibuya”), not a generic Pro pitch."},
+  {"n": 3, "screen": "pro", "title": "Sell Pro in the game’s own terms", "short": "Sell Pro in the game’s own terms", "impact": "CR +5–12%", "il": "to purchase",
+   "what": "“10x boost on competition entries” is your strongest line, and it reads like a spec. Show Free vs Pro on your own rivals bar, with the player’s goal first: entries for prize hunters, complete leaderboards for the world stage, the full planner for players who want their area."},
+  {"n": 4, "screen": "paywall", "title": "Show the annual saving and the proof next to the button", "short": "The annual saving and the proof at the button", "impact": "ARPU +5–10%", "il": "more players on annual",
+   "what": "Annual is 17% less than paying monthly in every storefront: US$79.99 is US$6.67 a month, ¥7,000 is ¥583, ₩70,000 is ₩5,833. Put that, your 4.7★ from 5.4K US ratings and “2.4M competitors in 182 countries” beside the plans, where the decision is made."},
+  {"n": 5, "screen": "offer", "title": "Catch the people who close the paywall", "short": "Catch the people who close the paywall", "impact": "CR +4–8%", "il": "to purchase",
+   "what": "INTVL is free to play, so closing the paywall usually means “not now”, not “no”. Offer your real US$49.99 / ¥4,400 / ₩44,000 price once, as the first year, then let them keep playing free. No countdown, no inflated strikethrough."}
+ ],
+ "kwRows": [
+  {"screen": "search",  "label": "App Store",      "a": "Typed “kyro” · your Japanese subtitle, captions in Japanese, first tile names Tokyo", "b": "Typed the Korean listing name · your Korean subtitle, captions in Korean, first tile names Seoul"},
+  {"screen": "intro",   "label": "Welcome",        "a": "“Run a loop. Claim Tokyo.” in Japanese", "b": "The same promise in Korean, with Seoul"},
+  {"screen": "plan",    "label": "First loop",     "a": "The loop is labelled Shibuya, Tokyo", "b": "The loop is labelled Gangnam, Seoul"},
+  {"screen": "claim",   "label": "Payoff",         "a": "“Your first block of Shibuya”", "b": "“Your first block of Gangnam”"},
+  {"screen": "paywall", "label": "Paywall",        "a": "“Rule Shibuya” · ¥7,000 a year, ¥583 a month", "b": "“Rule Gangnam” · ₩70,000 a year, ₩5,833 a month"},
+  {"screen": "offer",   "label": "Offer on close", "a": "First year for ¥4,400, or keep playing free", "hypA": true, "b": "First year for ₩44,000, or keep playing free", "hypB": true}
+ ]
+}
+</script>
+
+
+<div class="nav">
+  <div class="nav-in">
+    <div class="nav-brand">
+      <img class="mk" src="assets/brand/appstore-icon.jpg" alt="INTVL">
+      <b>Search to Pro</b><span>· INTVL</span>
+    </div>
+<div class="nav-tools" id="navTools">
+      <div class="seg" data-hseg="lang"></div>
+      <button class="hdemo-btn" data-hdemo><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg>30-sec walkthrough</button>
+    </div>
+    <div class="nav-links">
+      <button class="on" data-view="over">Overview</button>
+      <button data-view="proto">Prototype</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= OVERVIEW ======================= -->
+<div class="view on" id="view-over">
+
+<div class="hero">
+  <div class="wrap">
+    <!-- month + year = the day you build, not this file --><div class="eyebrow">Apple Ads × Onboarding · October 2026</div>
+    <h1>INTVL</h1>
+    <p class="lede">Runners in Japan and Korea are searching for a territory game. Answer each of them in their own language, on their own streets, and turn more of them into Pro.</p>
+    <div class="meta">Prepared by <b>Adapty</b> · based on your App Store listings in the US, Japan and Korea, intvl.com.au, our earlier INTVL rebuild and the Apple Ads keywords we saw running for INTVL</div>
+    <div class="herobtns"><button class="ghostbtn" data-demo><span class="pl"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg></span>Watch the 30-second walkthrough</button></div>
+    <div class="stats">
+      <div class="stat"><b>30,000+</b><span>apps run subscriptions<br>on Adapty</span></div>
+      <div class="stat"><b>2</b><span>keyword flows, with<br>5 ideas built into each</span></div>
+      <div class="stat"><b>0</b><span>design changes<br>to your art direction</span></div>
+    </div>
+
+    <div class="proof proof2">
+      <div class="proof-col">
+        <div class="proof-k">Built in Adapty Flow Builder</div>
+        <div class="proof-i"><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><p><b>Millions of dollars</b> in subscription revenue pass through Flow Builder every month.</p></div>
+        <div class="proof-i"><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><p><b>Nearly 500 apps</b> build their paywalls and onboarding in it.</p></div>
+      </div>
+      <div class="proof-col asa-col">
+        <div class="proof-k">Run with Adapty Ads Manager</div>
+        <div class="proof-i"><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><p>Trusted by teams managing <b>$100M+ in Apple Ads spend</b>.</p></div>
+        <div class="proof-i"><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><p><b>3 keywords across 2 markets</b> mapped for INTVL.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="asa">
+  <div class="wrap">
+    <div class="asa-card">
+      <div>
+        <div class="sec-k">New · Apple Ads × your flow</div>
+        <h2>Show every search <em>its own flow</em>.</h2>
+        <p>The Apple Ads keywords we saw running for INTVL are three, and none of them is your name: “kyro”, “kyro: ランニング陣取りゲーム” and “kyro: 영토 점령 러닝 게임”, the name of another territory app, in Japan and Korea only. A runner in Tokyo and a runner in Seoul who typed it want the same thing, a running territory game, but today both get one onboarding and one paywall. <b>Adapty Ads Manager passes the Apple Ads keyword into your flow</b>, so each search gets its own language, streets, price and offer, and every keyword is judged on revenue instead of installs. <b>Japanese and Korean runners who searched for a territory game land on an English-first onboarding built for everyone.</b></p>
+        <div class="asa-btns">
+          <a class="asa-go" href="https://adapty.io/apple-ads-manager/" target="_blank" rel="noopener">See how Adapty Ads Manager works
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <button class="asa-alt" data-view="proto">See both keyword flows
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="asa-stats">
+        <div><b class="o">3</b><span>keywords live, all another app’s name</span></div>
+        <div><b class="p">2</b><span>markets: Japan and Korea</span></div>
+        <div><b>0</b><span>keywords on your own name, “INTVL”</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="sec-k">What this is</div>
+    <h2>We searched for INTVL the way a new runner in Japan or Korea does, then rebuilt what happens after the tap.</h2>
+    <p class="body">Adapty powers subscriptions for <b>30,000+ apps</b>, so we get to see what moves conversion and ARPU across the market rather than inside one app. For INTVL we looked at two things. First, your app: your App Store listings in the US, Japan and Korea, intvl.com.au, and the five ideas from <a href="https://eddieatadapty.github.io/intvl-flow-rebuild/" target="_blank" rel="noopener">our earlier INTVL rebuild</a>. Second, the App Store searches that lead to it: <b>three Apple Ads keywords, all the name of another territory app, running in Japan and Korea only</b>, and none on “INTVL” anywhere.</p>
+    <p class="body">Your Japan and Korea listings already have their own subtitle, description and screenshots. The app behind them is in English. What follows is five ideas for the flow you have, and two keyword flows that show what happens when the runner in Tokyo and the runner in Seoul each get their own version. Every one is a hypothesis you can A/B test, and all of it is clickable. <b>The prototype uses your design, not ours.</b></p>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<div class="sec">
+  <div class="wrap">
+    <div class="sec-k">The five ideas</div>
+    <h2>Ranked by what we would test first.</h2>
+    <p class="body">Each one opens that screen in both keyword flows.</p>
+
+    <div class="ideas" id="ideas"></div>
+
+    <div class="band">
+      <div class="txt">
+        <div class="lab">Potential outcome</div>
+        <p>Run together, these five work on the same funnel at three points: what a new player sees before the paywall, what the paywall says to them, and what happens when they say “not now”.</p>
+        <p class="band-kw"><b>On top of that,</b> Adapty’s Apple Ads research puts keyword-matched paywalls at <b>+30–50% conversion</b> over one paywall for every search.</p>
+      </div>
+      <div class="nums">
+        <div><b>+25%</b><span>CR to purchase</span></div>
+        <div><b>+10%</b><span>ARPU</span></div>
+      </div>
+    </div>
+
+
+    <div class="kwsec">
+      <div class="sec-k">Two keywords, two flows</div>
+      <h2>The same app, answering the same search in two markets.</h2>
+      <p class="body">The five ideas sit underneath both. Set to Local, each phone speaks its searcher’s language and shows that storefront’s prices. Beyond the language, on six screens what the runner sees depends on where they searched.</p>
+      <div class="kwt" id="kwt"></div>
+    </div>
+
+    <div class="next">
+      <div class="sec-k">What happens next</div>
+      <h2>From first call to first test in two weeks.</h2>
+      <div class="next-steps">
+        <div><b>Day 1</b><h4>Your own name covered</h4><p>A brand campaign on “INTVL” in Japan and Korea, and wherever you advertise, so people who search your name find your ad first.</p></div>
+        <div><b>Week 1</b><h4>Japan and Korea flows live</h4><p>After a one-time SDK setup, the Japan search and the Korea search each get their own onboarding, language and paywall. No app release.</p></div>
+        <div><b>Week 2</b><h4>A/B tests per keyword</h4><p>Every keyword measured on revenue, not installs, with tests running per keyword.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <div class="qr"><img src="assets/qr-app.png" alt="QR code for the prototype"><span><b>Or open it on your phone</b>Scan to try both flows in your hand.</span></div>
+      <button class="bigbtn" data-view="proto">Open both keyword flows
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="wrap">
+    Impact ranges are Adapty’s expected effect from teardowns and A/B tests across subscription apps, not measured lift for INTVL. Every price, rating and feature line here and in the prototype comes from INTVL’s own App Store listings (US, Japan and Korea, read 8 October 2026), intvl.com.au and our earlier INTVL rebuild, which was built from your App Store screenshots: INTVL isn’t in ScreensDesign’s recorded library, and we haven’t walked your live flow. Apple Ads keywords are the ones we saw running for INTVL; “kyro” is another company’s app, and we say nothing about it beyond the fact that people search its name. Prices: US$79.99 / ¥7,000 / ₩70,000 is “INTVL Annual Subscription” on each storefront; we matched the monthly plan (US$7.99 / ¥700 / ₩7,000) and the offer price (US$49.99 / ¥4,400 / ₩44,000) across storefronts by their price ratio, because the listings don’t name those SKUs. The rating inside the app is your US one (4.73 from 5,414); the App Store screen shows each storefront’s own (Japan 4.92 from 24, Korea 3.67 from 6). Photos, the map, the globe and the ad screenshots are cut from your App Store screenshots; two of the three ad captions are your own listing headings in each language. The map is Melbourne: the Shibuya and Gangnam labels over it are demo defaults, and the live flow would draw the loop on the player’s own streets. Japanese and Korean copy is our translation. Shown in light mode only: we haven’t seen INTVL in dark mode. Hypothesis: the first-year offer at US$49.99 / ¥4,400 / ₩44,000. Those prices are on your listings, but we assumed they are an annual price you can offer once as a first year.
+  </div>
+</div>
+</div><!-- /view-over -->
+
+<!-- ======================= PROTOTYPE ======================= -->
+<div class="view" id="view-proto">
+<div class="p3 side one" id="p3">
+  <div class="p3-stage" id="p3Stage">
+    <div class="p3-mtools">
+      <div class="seg" data-hseg="lang"></div>
+      <button class="hdemo-btn" data-hdemo><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg>30-sec walkthrough</button>
+    </div>
+    <div class="p3-mtog" id="mtog"><button data-one="a" class="on"></button><button data-one="b"></button></div>
+    <div class="duo" id="duo">
+      <div class="kwcard ka" data-k="a"></div>
+      <div class="flow ka show" data-flow="a">
+        <div class="kwpill ka" data-k="a"></div>
+        <div class="pbox"><iframe src="?embed=1&amp;flow=a" title="Keyword flow A"></iframe></div>
+      </div>
+      <div class="flow kb" data-flow="b">
+        <div class="kwpill kb" data-k="b"></div>
+        <div class="pbox"><iframe src="?embed=1&amp;flow=b" title="Keyword flow B"></iframe></div>
+      </div>
+      <div class="kwcard kb" data-k="b"></div>
+    </div>
+    <div class="p3-bar" id="p3Bar">
+      <div class="steps" id="hSteps"></div>
+      <div class="hcap hidden" id="hCap"><p id="hCapT"></p><div class="bar"><i id="hProg"></i></div><button id="hStop">Stop</button></div>
+    </div>
+  </div>
+  <aside class="p3-panel"><div class="pn" id="hPanel"></div></aside>
+</div>
+<button class="drawer-btn" id="drawerBtn"><i></i>Ideas for this step</button>
+<div class="stage">
+  <div class="phonecol">
+    <div class="tools" id="tools">
+      <div class="seg" id="segLang"></div>
+      <button class="demo-btn" id="demoBtn"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>30-sec walkthrough</button>
+    </div>
+    <div class="phone">
+      <div class="phone-in" id="phoneIn">
+        <div class="island"></div>
+        <div class="sbar" id="sbar">
+          <span>9:41</span>
+          <span class="glyphs">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7.5" width="3" height="3.5" rx="1"/><rect x="4.5" y="5.5" width="3" height="5.5" rx="1"/><rect x="9" y="3" width="3" height="8" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 10.5 5.6 7.9a3.4 3.4 0 0 1 4.8 0L8 10.5Zm0-5.6a6.4 6.4 0 0 0-4.5 1.9L1.7 4.9a9 9 0 0 1 12.6 0l-1.8 1.9A6.4 6.4 0 0 0 8 4.9Z"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".6" y=".6" width="20" height="10.8" rx="3" stroke="currentColor" stroke-opacity=".5"/><rect x="2.2" y="2.2" width="16.5" height="7.6" rx="1.8" fill="currentColor"/><path d="M22.3 4.1v3.8a2 2 0 0 0 0-3.8Z" fill="currentColor" fill-opacity=".5"/></svg>
+          </span>
+        </div>
+        <div class="homebar" id="homebar"></div>
+        <div class="finger" id="finger"></div>
+        <div class="screenwrap">
+
+<!-- SCREENS:START (EDIT) — one <section class="scr" data-id> per step, flow order = ORDER in the script.
+     The App Store search screen stays (engine): it shows the ad for this phone's keyword. -->
+<!-- APP STORE SEARCH -->
+<section class="scr scr--as" data-id="search">
+  <div class="scr-top">
+    <div class="as-bar"><div class="as-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span id="asKw"></span><i class="as-clr">✕</i></div>
+      <button class="as-cancel" data-t="as.cancel"></button></div>
+  </div>
+  <div class="scr-body">
+    <div class="as-ad">
+      <div class="as-row">
+        <img class="as-ic" src="assets/brand/appstore-icon.jpg" alt="">
+        <div class="as-meta"><b>INTVL</b><span class="s" data-t="as.sub"></span>
+          <span class="r"><span class="adb" data-t="as.ad"></span><span id="asRt"></span></span></div>
+        <button class="as-get" id="asGet" data-t="as.get"></button>
+      </div>
+      <div class="as-shots" id="asShots"></div>
+    </div>
+    <div class="as-org">
+      <div class="as-sk"><i></i><div><span></span><span></span></div><em></em></div>
+      <div class="as-sk"><i></i><div><span></span><span></span></div><em></em></div>
+      <div class="as-sk"><i></i><div><span></span><span></span></div><em></em></div>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME: their photo and wordmark (App Store screenshots 10 and 1); the first line answers the search -->
+<section class="scr s-dark" data-id="intro" data-light="1">
+  <img class="s-photo" src="assets/crop/photo.png" alt="">
+  <div class="s-fade"></div>
+  <div class="s-pad s-intro">
+    <img class="s-logo" src="assets/crop/logo.png" alt="INTVL">
+    <h1 class="s-dh s-w dsp" data-th="i_h"></h1>
+    <p class="s-sub s-w" data-t="i_s"></p>
+    <button class="s-cta" data-go="mode" data-t="i_c"></button>
+    <p class="s-fine mono" data-t="i_f"></p>
+  </div>
+</section>
+
+<!-- RUN OR RIDE: their activity sheet (screenshot 4) -->
+<section class="scr s-dark" data-id="mode" data-light="1">
+  <img class="s-mapbg" src="assets/crop/globe.png" alt="">
+  <div class="s-scrim"></div>
+  <div class="s-pad">
+    <div class="s-top s-w"><button class="s-back" data-back>‹ <span data-t="back"></span></button></div>
+  </div>
+  <div class="s-sheet">
+    <i class="s-grab"></i>
+    <h2 class="s-h2" data-t="m_h"></h2>
+    <p class="s-sub" data-t="m_s"></p>
+    <button class="s-opt" data-mode="run"><svg class="s-ic" viewBox="0 0 24 24"><path d="M3 16.5h13.8a3.7 3.7 0 0 0 3.7-3.7c0-.9-.7-1.6-1.6-1.8l-5-1.1-2.6-3.6H8.2l.5 3.1-3.6 1.1z"/><path d="M3 19.5h18M9.5 12.5l1.5-1M12 13l1.5-1"/></svg><span data-t="m_run"></span><i class="s-radio"></i></button>
+    <button class="s-opt" data-mode="ride"><svg class="s-ic" viewBox="0 0 24 24"><circle cx="5.5" cy="15.5" r="3.5"/><circle cx="18.5" cy="15.5" r="3.5"/><path d="M5.5 15.5l3.8-6.5h5.4l3.8 6.5M9.3 9l2.7 6.5h-6.5M13 6.5h3"/></svg><span data-t="m_ride"></span><i class="s-radio"></i></button>
+  </div>
+</section>
+
+<!-- HOW TO PLAY: the four ways to play from their listing -->
+<section class="scr" data-id="goal">
+  <div class="s-pad s-goal">
+    <div class="s-top"><button class="s-back" data-back>‹ <span data-t="back"></span></button></div>
+    <div class="s-prog"><i style="width:66%"></i></div>
+    <h1 class="s-dh dsp" data-th="g_h"></h1>
+    <p class="s-sub" data-t="g_s"></p>
+    <button class="s-opt s-opt2" data-goal="turf"><svg class="s-ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b data-t="g_t"></b><small data-t="g_t2"></small></span></button>
+    <button class="s-opt s-opt2" data-goal="world"><svg class="s-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span><b data-t="g_w"></b><small data-t="g_w2"></small></span></button>
+    <button class="s-opt s-opt2" data-goal="prizes"><svg class="s-ic" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20.5h7M10 17h4v3.5h-4z"/></svg><span><b data-t="g_p"></b><small data-t="g_p2"></small></span></button>
+    <button class="s-opt s-opt2" data-goal="club"><svg class="s-ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19.5c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M15.5 14c3 0 5.5 1.8 5.5 5"/></svg><span><b data-t="g_c"></b><small data-t="g_c2"></small></span></button>
+  </div>
+</section>
+
+<!-- FIRST LOOP: their route planner (screenshot 3); only the area label is ours -->
+<section class="scr" data-id="plan">
+  <img class="s-map" src="assets/crop/planmap.png" alt="">
+  <div class="s-phead mono">
+    <button class="s-back" data-back>‹ <span data-t="back"></span></button>
+    <div class="s-stats">
+      <span class="s-stat"><svg class="s-ic" viewBox="0 0 24 24"><path d="M5 19c4-1 3-6 7-7s3-6 7-7"/></svg><span data-t="p_dist"></span> <b>3.93</b>km</span>
+      <span class="s-stat"><svg class="s-ic" viewBox="0 0 24 24"><path d="M12 3l8 9-8 9-8-9z"/></svg><span data-t="p_cap"></span> <b>0.9</b>km²</span>
+    </div>
+    <span class="s-q">?</span>
+  </div>
+  <div class="s-loopp mono"><i></i><span data-t="p_loop"></span></div>
+  <div class="s-pin"><svg class="s-ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-t="p_pin"></span></div>
+  <div class="s-pbot">
+    <div class="s-coach">
+      <div class="s-lab mono" data-t="p_k"></div>
+      <p id="planT"></p>
+    </div>
+    <div class="s-tools">
+      <span class="s-tb"><svg class="s-ic" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10H9M8 5L4 9l4 4"/></svg></span>
+      <span class="s-tb s-off"><svg class="s-ic" viewBox="0 0 24 24"><path d="M20 9H9a5 5 0 0 0 0 10h6M16 5l4 4-4 4"/></svg></span>
+      <span class="s-tb"><svg class="s-ic" viewBox="0 0 24 24"><path d="M4 16l9-9 6 6-6 6H8zM13 19h7"/></svg></span>
+      <span class="s-terr"><span data-t="p_ter"></span><button class="s-tog" id="terTog" aria-label="Territories"></button></span>
+      <span class="s-draw"><svg class="s-ic" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg><span data-t="p_draw"></span></span>
+    </div>
+    <button class="s-cta s-savebtn" data-go="claim" data-t="p_save"></button>
+  </div>
+</section>
+
+<!-- PAYOFF: their loop, zoomed; says the goal and the area back -->
+<section class="scr s-dark" data-id="claim" data-light="1">
+  <img class="s-zoom" src="assets/crop/loopzoom.png" alt="">
+  <div class="s-pad">
+    <div class="s-top s-w"><button class="s-back s-chip" data-back>‹ <span data-t="back"></span></button></div>
+  </div>
+  <div class="s-you">
+    <span class="s-av"><svg class="s-ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5"/></svg></span>
+    <span><b data-t="c_you"></b><small class="mono"><svg class="s-ic" viewBox="0 0 24 24" style="width:10px;height:10px"><path d="M12 3l8 9-8 9-8-9z"/></svg>+0.9 KM²</small></span>
+  </div>
+  <div class="s-card">
+    <h1 class="s-dh dsp" id="claimH"></h1>
+    <p class="s-sub" id="claimS"></p>
+    <div class="s-nums mono">
+      <div><span class="s-lab" data-t="p_dist"></span><b>3.93 KM</b></div>
+      <div><span class="s-lab" data-t="p_cap"></span><b>0.9 KM²</b></div>
+      <div><span class="s-lab" data-t="c_m"></span><b id="claimM"></b></div>
+    </div>
+    <button class="s-cta s-dcta" data-go="pro" data-t="cont"></button>
+  </div>
+</section>
+
+<!-- PRO: Free vs Pro on their rivals bar (screenshot 7); the three extras from intvl.com.au -->
+<section class="scr" data-id="pro">
+  <div class="s-pad s-pro">
+    <div class="s-top"><button class="s-back" data-back>‹ <span data-t="back"></span></button><span class="s-tagpro mono">INTVL PRO</span></div>
+    <h1 class="s-dh dsp" data-th="r_h"></h1>
+    <p class="s-sub" data-t="r_s"></p>
+    <div class="s-rvs">
+      <div class="s-rv" data-card="en">
+        <div class="s-rvh"><span data-t="r_en"></span><span class="s-tag mono" data-t="r_tag"></span></div>
+        <div class="s-bar"><i class="s-bf" style="width:12%"></i><i class="s-bp"></i></div>
+        <div class="s-rvv mono"><span data-t="r_en_f"></span><span>PRO · 10×</span></div>
+        <p data-t="r_en_n"></p>
+      </div>
+      <div class="s-rv" data-card="lb">
+        <div class="s-rvh"><span data-t="r_lb"></span><span class="s-tag mono" data-t="r_tag"></span></div>
+        <div class="s-bar"><i class="s-bf" style="width:34%"></i><i class="s-bp"></i></div>
+        <div class="s-rvv mono"><span data-t="r_lb_f"></span><span data-t="r_lb_p"></span></div>
+        <p data-t="r_lb_n"></p>
+      </div>
+      <div class="s-rv" data-card="rp">
+        <div class="s-rvh"><span data-t="r_rp"></span><span class="s-tag mono" data-t="r_tag"></span></div>
+        <div class="s-bar"><i class="s-bf" style="width:34%"></i><i class="s-bp"></i></div>
+        <div class="s-rvv mono"><span data-t="r_rp_f"></span><span data-t="r_rp_p"></span></div>
+        <p data-t="r_rp_n"></p>
+      </div>
+    </div>
+    <button class="s-cta" data-go="paywall" data-t="r_c"></button>
+  </div>
+</section>
+
+<!-- PAYWALL: their globe (screenshot 6), wordmark and green -->
+<section class="scr s-dark" data-id="paywall" data-light="1">
+  <img class="s-globe" src="assets/crop/globe.png" alt="">
+  <button class="s-x" id="payClose" aria-label="Close">✕</button>
+  <div class="s-pwlogo"><img src="assets/crop/logo.png" alt="INTVL"><span class="mono">PRO</span></div>
+  <div class="s-area mono"><svg class="s-ic" viewBox="0 0 24 24"><path d="M12 3l8 9-8 9-8-9z"/></svg><span data-t="pw.area"></span></div>
+  <div class="s-pws">
+    <h1 class="s-dh dsp" id="payH"></h1>
+    <div class="s-proof mono"><span><span class="s-stars">★★★★★</span> <b data-t="w_r"></b></span><span data-t="w_c"></span></div>
+    <ul class="s-ticks">
+      <li><i><svg class="s-ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span data-t="w_t1"></span></li>
+      <li><i><svg class="s-ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span data-t="w_t2"></span></li>
+      <li><i><svg class="s-ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span data-t="w_t3"></span></li>
+    </ul>
+    <button class="s-plan s-plan1" data-plan="year"><i class="s-radio"></i><span class="s-pn"><b data-t="w_yn"></b><small data-t="w_yp"></small></span><span class="s-pp"><b class="mono" data-t="w_ym"></b><span class="s-save mono" data-t="w_save"></span></span></button>
+    <button class="s-plan" data-plan="month"><i class="s-radio"></i><span class="s-pn"><b data-t="w_mn"></b><small data-t="w_mp"></small></span><span class="s-pp"><b class="mono" data-t="w_mm"></b></span></button>
+    <p class="s-pf" data-t="w_f"></p>
+    <button class="s-cta" id="payCta"></button>
+    <div class="s-legal"><span data-t="w_terms"></span><span data-t="w_priv"></span><span data-t="w_rest"></span></div>
+  </div>
+</section>
+
+<!-- OFFER ON CLOSE: slides up over the paywall; their real lower SKU, once, as the first year -->
+<section class="scr sheet s-offer" data-id="offer" data-light="1">
+  <div class="s-ocard">
+    <i class="s-grab"></i>
+    <div class="s-lab mono" data-t="o_k"></div>
+    <h1 class="s-dh s-w dsp" data-th="o_h"></h1>
+    <p class="s-sub s-w" data-t="o_s"></p>
+    <div class="s-obox">
+      <div><small class="mono">INTVL PRO · <span data-t="w_yn"></span></small><b data-t="o_b2"></b></div>
+      <div class="s-op"><b class="mono" data-t="o_p"></b><span class="mono" data-t="o_pm"></span></div>
+    </div>
+    <p class="s-onote" data-t="o_n"></p>
+    <button class="s-cta" id="offerCta" data-t="o_c"></button>
+    <button class="s-no" id="offNo" data-t="o_no"></button>
+  </div>
+</section>
+
+<!-- CONFIRMED -->
+<section class="scr s-dark" data-id="done" data-light="1">
+  <div class="s-pad s-done">
+    <span class="s-big"><svg class="s-ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+    <h1 class="s-dh s-w dsp" data-th="dn_h"></h1>
+    <p class="s-sub s-w" data-t="dn_s"></p>
+    <button class="s-cta" id="dnCta" data-t="dn_c"></button>
+  </div>
+</section>
+<!-- SCREENS:END -->
+
+        </div>
+      </div>
+    </div>
+    <div class="demo-cap hidden" id="demoCap"><div class="bar"><i id="demoProg"></i></div><p id="demoTxt"></p><button id="demoStop">Stop</button></div>
+    <div class="chips" id="chips"></div>
+    <p class="chiphint">Jump to any screen — answers already filled in.</p>
+    <div class="qr"><img src="assets/qr-app.png" alt="QR code for this prototype"><span><b>Open it on your phone</b>Scan to try the flow in your hand.</span></div>
+  </div>
+  <div class="panelcol"><div class="pn" id="panel"></div></div>
+</div>
+</div><!-- /view-proto -->
+
+<script>
+/* ================= COPY (EDIT): phone-screen copy, one entry per language in META.langs order (en, ja, ko) =================
+   data-t="key" sets textContent, data-th="key" sets innerHTML; {tokens} come from t(key,{...}) and from CTX():
+   the storefront prices of the phone's language, the keyword's city and area, and run/ride. */
+var META = JSON.parse(document.getElementById('meta').textContent);
+var LANGS = META.langs.map(function(l){ return l[0]; });
+function langName(c){ return (META.langs.filter(function(l){ return l[0]===c; })[0]||[c,c,c])[2]; }
+/* ---- the overview and host pieces that come from META (rendered before any wiring below) ---- */
+(function renderMeta(){
+  var Q=function(k){ return '“'+META.kw[k].q+'”'; };
+  var ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>';
+  var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var el=function(id){ return document.getElementById(id); };
+  if(el('ideas')) el('ideas').innerHTML=META.ideas.map(function(x){
+    return '<button class="idea" data-jump="'+x.screen+'"><span class="no">0'+x.n+'</span><span><h3>'+x.title+'</h3><p>'+x.what+'</p>'
+      +'<span class="seeit">See the screen '+ARROW+'</span></span><span class="out"><b>'+x.impact+'</b><span>'+x.il+'</span></span></button>'; }).join('');
+  var HYP='<span class="kwhyp">Hypothesis</span>';
+  if(el('kwt')) el('kwt').innerHTML='<div class="kwt-h"><span>Screen</span><span class="f">'+Q('a')+' · '+META.kw.a.short+'</span><span class="b">'+Q('b')+' · '+META.kw.b.short+'</span></div>'
+    +META.kwRows.map(function(r){ return '<button class="kwt-r" data-kwjump="'+r.screen+'"><span class="s">'+r.label+'</span>'
+      +'<span class="ka" data-k="'+META.kw.a.short+' · ">'+r.a+(r.hypA?' '+HYP:'')+'</span><span class="kb" data-k="'+META.kw.b.short+' · ">'+r.b+(r.hypB?' '+HYP:'')+'</span><i>→</i></button>'; }).join('');
+  document.querySelectorAll('.kwcard[data-k]').forEach(function(c){ var k=c.dataset.k;
+    c.innerHTML='<div class="k">Apple Ads keyword · '+META.kw[k].short+'</div><div class="q">'+ICON+Q(k)+'</div><span class="who">Who searches this</span><p>'+META.kw[k].who+'</p>'; });
+  document.querySelectorAll('.kwpill[data-k]').forEach(function(c){ c.innerHTML=ICON+Q(c.dataset.k)+' <small>· '+META.kw[c.dataset.k].short+'</small>'; });
+  document.querySelectorAll('#mtog button').forEach(function(b){ b.textContent=Q(b.dataset.one)+' · '+META.kw[b.dataset.one].short; });
+  var segs=function(attr){ return META.langs.map(function(l,i){ return '<button '+attr+'="'+l[0]+'"'+(i?'':' class="on"')+'>'+l[1]+'</button>'; }).join(''); };
+  /* host: "Local" (default) sends each phone its keyword's own language; EN / JA / KO set both phones */
+  document.querySelectorAll('.seg[data-hseg=lang]').forEach(function(s){ s.innerHTML='<button data-hlang="local" class="on" title="Each phone in its searcher’s language">Local</button>'
+    +META.langs.map(function(l){ return '<button data-hlang="'+l[0]+'">'+l[1]+'</button>'; }).join(''); });
+  if(el('segLang')) el('segLang').innerHTML=segs('data-lang');
+})();
+var T = {
+ 'as.cancel':["Cancel","キャンセル","취소"],
+ 'as.ad':   ["Ad","広告","광고"],
+ 'as.get':  ["Get","入手","받기"],
+ 'as.open': ["Open","開く","열기"],
+ /* their own subtitles on the US, Japan and Korea listings */
+ 'as.sub':  ["The World Is the Game.","世界を、ゲームに。","세상이 곧 게임"],
+ 'as.c1':   ["Run loops.<br>Claim {city}.","走って、<br>{city}を陣取ろう","달리고,<br>{city}{cityP} 차지하세요"],
+ /* the next two are their own listing headings, per storefront */
+ 'as.c2':   ["Claim your territory","テリトリーの獲得","영역 차지하기"],
+ 'as.c3':   ["Hold ground, win real prizes","テリトリー防衛と賞品獲得","영역을 지키고 진짜 경품 받기"],
+ 'back':    ["BACK","戻る","뒤로"],
+ 'i_h':     ["Run a loop.<br>Claim <em>{city}</em>.","走って、<br><em>{city}</em>を<br>陣取ろう。","달려서<br><em>{city}</em>{cityP}<br>차지하세요."],
+ 'i_s':     ["Close a loop on the map and everything inside is yours. Hold it for entries into real-prize competitions, and add it to your club’s total.",
+             "ループを完了すると、その内側があなたのテリトリーに。保持したエリアは実際の賞品が当たるコンペの応募口数になり、クラブの合計にも加算されます。",
+             "한 바퀴를 완주하면 그 안쪽 땅이 내 영역이 돼요. 지킨 영역만큼 진짜 경품이 걸린 대회 응모 기회를 얻고, 클럽 전체 영역에도 더해져요."],
+ 'i_c':     ["START YOUR CONQUEST","陣取りをはじめる","정복 시작하기"],
+ 'i_f':     ["FREE TO PLAY · RUN OR RIDE","無料でプレイ · ランもライドも","무료 플레이 · 달리기도 라이딩도"],
+ 'm_h':     ["Choose your activity type","アクティビティタイプを選択","활동 유형을 선택하세요"],
+ 'm_s':     ["Runs and rides each have their own territory game, so every battle is fair.","ランとライドはそれぞれ別のテリトリーゲーム。だから、どのバトルも公平です。","달리기와 라이딩은 각자 다른 영역 게임이라 모든 대결이 공정해요."],
+ 'm_run':   ["Run / Walk","ラン / ウォーク","달리기 / 걷기"],
+ 'm_ride':  ["Bike / Ride","バイク / ライド","자전거 / 라이딩"],
+ 'g_h':     ["How do you<br>want to play?","どう<br>プレイする？","어떻게<br>플레이할까요?"],
+ 'g_s':     ["Play it your way. You can switch focus whenever you want.","自分らしくプレイ。目標はいつでも切り替えられます。","내 방식대로 플레이하세요. 언제든 목표를 바꿀 수 있어요."],
+ 'g_t':     ["Rule my suburb or city","地元の街を制覇する","내 동네나 도시 지배하기"],
+ 'g_t2':    ["Become your area’s territory leader","自分の地域のテリトリーリーダーに","우리 동네 영역 1위 되기"],
+ 'g_w':     ["Be the best in the world","世界一を目指す","세계 최고 되기"],
+ 'g_w2':    ["Chase the global leaderboard","グローバルリーダーボードを追いかける","세계 순위표 노리기"],
+ 'g_p':     ["Win real prizes","実際の賞品を獲得する","진짜 경품 받기"],
+ 'g_p2':    ["Hold ground, earn competition entries","エリアを保持して、コンペの応募口数を獲得","영역을 지켜 대회 응모 기회 얻기"],
+ 'g_c':     ["Play with my club or friends","クラブや友達とプレイする","클럽이나 친구와 플레이하기"],
+ 'g_c2':    ["Private lobbies and club totals","プライベートロビーとクラブの合計","비공개 로비와 클럽 합계"],
+ 'p_dist':  ["DISTANCE","距離","거리"],
+ 'p_cap':   ["CAPTURE","獲得","점령"],
+ 'p_loop':  ["LOOP CLOSED","ループ完成","루프 완성"],
+ 'p_pin':   ["{area}, {city}","{city}・{area}","{city} {area}"],
+ 'p_k':     ["YOUR FIRST CAPTURE","最初の獲得","첫 번째 점령"],
+ 'p_t':     ["We drew a <b>3.93 km</b> loop in {area}. {V} it once and the <b>0.9 km²</b> inside is yours.",
+             "{area}に<b>3.93 km</b>のループを描きました。一度{V}すれば、内側の<b>0.9 km²</b>はあなたのもの。",
+             "{area}에 <b>3.93km</b> 루프를 그렸어요. 한 번 {V} 안쪽 <b>0.9km²</b>가 내 것이 돼요."],
+ 'p_ter':   ["Territories","テリトリー","영역"],
+ 'p_draw':  ["Draw","描く","그리기"],
+ 'p_save':  ["SAVE MY FIRST LOOP","最初のループを保存","첫 루프 저장하기"],
+ 'c_you':   ["You","あなた","나"],
+ 'c_m':     ["MODE","モード","모드"],
+ 'cont':    ["CONTINUE","続ける","계속하기"],
+ 'claimH.turf':  ["Your first block of <em>{area}</em>","<em>{area}</em>の<br>最初のブロック","<em>{area}</em>의<br>첫 번째 블록"],
+ 'claimH.world': ["Your first step onto <em>the world stage</em>","<em>世界の舞台</em>への<br>第一歩","<em>세계 무대</em>로<br>첫걸음"],
+ 'claimH.prizes':["0.9 km² of <em>prize entries</em>","0.9 km²分の<br><em>応募口数</em>","0.9km²만큼의<br><em>응모 기회</em>"],
+ 'claimH.club':  ["0.9 km² for <em>your club</em>","<em>クラブ</em>のための<br>0.9 km²","<em>클럽</em>을 위한<br>0.9km²"],
+ 'claimS.turf':  ["{V} this loop and 0.9 km² of {area} is yours. Hold it, and you’re on your way to Territory Ruler.",
+                  "このループを{V}すれば、{area}の0.9 km²があなたのものに。守り抜けば、Territory Rulerへの道が始まります。",
+                  "이 루프를 {V} {area}의 0.9km²가 내 것이 돼요. 지켜내면 Territory Ruler로 가는 길이 열려요."],
+ 'claimS.world': ["{V} this loop and 0.9 km² of {area} goes on the world leaderboard, against 2.4M competitors in 182 countries.",
+                  "このループを{V}すれば、{area}の0.9 km²が世界のリーダーボードに。182か国、240万人の競争相手と競います。",
+                  "이 루프를 {V} {area}의 0.9km²가 세계 순위표에 올라가요. 182개국 240만 명의 경쟁자와 겨뤄요."],
+ 'claimS.prizes':["Every bit of {area} you hold earns entries into competitions with real prizes. {V} this loop to start.",
+                  "保持している{area}のエリアはすべて、実際の賞品が当たるコンペの応募口数に。このループを{V}して始めましょう。",
+                  "지키고 있는 {area}의 모든 영역이 진짜 경품이 걸린 대회 응모 기회가 돼요. 이 루프를 {V} 시작이에요."],
+ 'claimS.club':  ["Your territory adds to your club’s total, so this one loop in {area} helps everyone you play alongside.",
+                  "あなたのテリトリーはクラブの合計に加算されます。{area}のこの1ループが、一緒にプレイする仲間全員の力に。",
+                  "내 영역은 클럽 전체 영역에 더해져요. {area}의 이 한 루프가 함께 플레이하는 모두에게 도움이 돼요."],
+ 'r_h':     ["Same loops.<br><em>More game.</em>","同じループで、<br><em>もっとゲームを。</em>","같은 루프,<br><em>더 큰 게임.</em>"],
+ 'r_s':     ["INTVL stays free to play. Pro unlocks the extras.","INTVLは無料でプレイ可能。Proで追加機能が解放されます。","INTVL은 무료로 플레이할 수 있어요. Pro는 추가 기능을 열어줘요."],
+ 'r_en':    ["Competition entries","コンペ応募口数","대회 응모 기회"],
+ 'r_tag':   ["YOUR GOAL","あなたの目標","내 목표"],
+ 'r_en_f':  ["FREE · 1×","無料 · 1×","무료 · 1×"],
+ 'r_en_n':  ["Same territory, 10x the entries into every prize competition.","同じテリトリーで、すべての賞品コンペの応募口数が10倍。","같은 영역으로 모든 경품 대회 응모 기회가 10배."],
+ 'r_lb':    ["Leaderboards","リーダーボード","순위표"],
+ 'r_lb_f':  ["FREE · LIMITED VIEW","無料 · 一部のみ","무료 · 일부만"],
+ 'r_lb_p':  ["PRO · COMPLETE","PRO · すべて","PRO · 전체"],
+ 'r_lb_n':  ["Every rank, from your area to the whole world.","地元から世界まで、すべての順位。","우리 동네부터 전 세계까지 모든 순위."],
+ 'r_rp':    ["Route planner","ルートプランナー","경로 플래너"],
+ 'r_rp_f':  ["FREE · BASIC","無料 · ベーシック","무료 · 기본"],
+ 'r_rp_p':  ["PRO · FULL","PRO · フル機能","PRO · 전체 기능"],
+ 'r_rp_n':  ["Plan every capture before you head out.","出かける前に、すべての獲得を計画。","나가기 전에 모든 점령을 계획하세요."],
+ 'r_c':     ["SEE PRO PLANS","Proプランを見る","Pro 요금제 보기"],
+ 'pw.area': ["{area} · 0.9 km² planned","{area} · 0.9 km² 計画済み","{area} · 0.9km² 계획됨"],
+ 'payH.turf':   ["Rule <em>{area}</em>","<em>{area}</em>を<br>制覇しよう","<em>{area}</em>{areaP}<br>정복하세요"],
+ 'payH.world':  ["Climb <em>the world stage</em>","<em>世界の舞台</em>へ","<em>세계 무대</em>로"],
+ 'payH.prizes': ["10x your <em>prize entries</em>","<em>応募口数</em>を<br>10倍に","<em>응모 기회</em><br>10배"],
+ 'payH.club':   ["Lead <em>your club</em>","<em>クラブ</em>を<br>率いよう","<em>클럽</em>을<br>이끄세요"],
+ 'w_r':     ["4.7 · 5.4K US ratings","4.7 · 米国の評価5.4K件","4.7 · 미국 평가 5.4K개"],
+ 'w_c':     ["2.4M competitors · 182 countries","競争相手240万人 · 182か国","경쟁자 240만 명 · 182개국"],
+ 'w_t1':    ["10x entries into every prize competition","すべての賞品コンペで応募口数10倍","모든 경품 대회 응모 기회 10배"],
+ 'w_t2':    ["Complete leaderboards, every rank","完全なリーダーボード、すべての順位","전체 순위표, 모든 순위"],
+ 'w_t3':    ["The full route planner","フル機能のルートプランナー","전체 기능 경로 플래너"],
+ 'w_yn':    ["Annual","年間","연간"],
+ 'w_yp':    ["{yr} a year","年額{yr}","연 {yr}"],
+ 'w_ym':    ["{yrm}/mo","{yrm}/月","월 {yrm}"],
+ 'w_save':  ["SAVE {save}","{save}お得","{save} 절약"],
+ 'w_mn':    ["Monthly","月間","월간"],
+ 'w_mp':    ["{mo} a month","月額{mo}","월 {mo}"],
+ 'w_mm':    ["{mo}/mo","{mo}/月","월 {mo}"],
+ 'w_f':     ["Cancel anytime. INTVL stays free to play.","いつでも解約できます。INTVLは無料でプレイ可能。","언제든 해지할 수 있어요. INTVL은 계속 무료예요."],
+ 'w_cy':    ["CONTINUE WITH ANNUAL","年間プランで続ける","연간으로 계속하기"],
+ 'w_cm':    ["CONTINUE WITH MONTHLY","月間プランで続ける","월간으로 계속하기"],
+ 'w_terms': ["Terms","利用規約","이용 약관"],
+ 'w_priv':  ["Privacy","プライバシー","개인정보"],
+ 'w_rest':  ["Restore","復元","복원"],
+ 'o_k':     ["BEFORE YOU GO","その前に","잠깐만요"],
+ 'o_h':     ["Your first year<br><em>for {off}</em>","最初の1年が<br><em>{off}</em>","첫 1년<br><em>{off}</em>"],
+ 'o_s':     ["Normally {yr} a year. That’s {offm} a month for every loop you plan in {area} and every entry you earn.",
+             "通常は年額{yr}。{area}で計画するすべてのループと、獲得するすべての応募口数が、月あたり{offm}。",
+             "평소 가격은 연 {yr}. {area}에서 계획하는 모든 루프와 얻는 모든 응모 기회가 한 달 {offm}."],
+ 'o_b2':    ["First year","最初の1年","첫 1년"],
+ 'o_p':     ["{off}","{off}","{off}"],
+ 'o_pm':    ["{offm}/mo","{offm}/月","월 {offm}"],
+ 'o_n':     ["{offpct} less than your standard {yr} a year.","通常の年額{yr}より{offpct}お得。","평소 연 {yr}보다 {offpct} 저렴해요."],
+ 'o_c':     ["CLAIM MY FIRST YEAR","最初の1年を手に入れる","첫 1년 받기"],
+ 'o_no':    ["No thanks, keep playing free","いいえ、無料でプレイを続ける","괜찮아요, 무료로 계속할게요"],
+ 'dn_h':    ["You’re<br><em>Pro</em>.","<em>Pro</em>へ<br>ようこそ。","<em>Pro</em>가<br>되었어요."],
+ 'dn_s':    ["Your first loop is saved. Head out and close it.","最初のループを保存しました。さあ、ループを閉じに行こう。","첫 루프가 저장됐어요. 이제 나가서 완성하세요."],
+ 'dn_c':    ["OPEN THE MAP","マップを開く","지도 열기"]
+};
+/* prices follow the phone's language: EN = US App Store, JA = Japan, KO = Korea (read 8 Oct 2026).
+   yr = "INTVL Annual Subscription"; mo and off matched across storefronts by price ratio; the rest computed. */
+var PR = {
+ en:{yr:'US$79.99', mo:'US$7.99', yrm:'US$6.67', save:'17%', off:'US$49.99', offm:'US$4.17', offpct:'38%'},
+ ja:{yr:'¥7,000',   mo:'¥700',    yrm:'¥583',    save:'17%', off:'¥4,400',   offm:'¥367',    offpct:'37%'},
+ ko:{yr:'₩70,000',  mo:'₩7,000',  yrm:'₩5,833',  save:'17%', off:'₩44,000',  offm:'₩3,667',  offpct:'37%'}
+};
+/* each storefront's own App Store rating, for the search screen only */
+var SR = {en:[4.73,'5.4K'], ja:[4.92,'24'], ko:[3.67,'6']};
+/* run / ride, in the form each language's sentences use */
+var MV = {en:{run:'Run',ride:'Ride'}, ja:{run:'ラン',ride:'ライド'}, ko:{run:'달리면',ride:'라이딩하면'}};
+var MM = {en:{run:'RUN',ride:'RIDE'}, ja:{run:'ラン',ride:'ライド'}, ko:{run:'달리기',ride:'라이딩'}};
+
+/* ================= one flow per Apple Ads keyword (engine) + per-keyword copy (EDIT) =================
+   The two keywords want the same thing in two markets, so the keyword changes the city / area defaults
+   (AREA), the ad screenshots (SHOTS) and, via its language, the storefront prices. FT stays empty. */
+var EMBED = /[?&]embed/.test(location.search);
+if(EMBED) document.documentElement.classList.add('embed');
+var FLOW = (location.search.match(/[?&]flow=(a|b)/)||[])[1] || '';
+var FT = {a:{}, b:{}};
+if(FT[FLOW]) Object.keys(FT[FLOW]).forEach(function(k){ T[k]=FT[FLOW][k]; });
+var KW = (META.kw[FLOW]||META.kw.a).q;
+/* demo defaults for where the first loop is drawn; the live flow uses the player's location. cityP/areaP = Korean object particle */
+var AREAS = {
+ a:{en:{city:'Tokyo',area:'Shibuya'}, ja:{city:'東京',area:'渋谷'}, ko:{city:'도쿄',area:'시부야',cityP:'를',areaP:'를'}},
+ b:{en:{city:'Seoul',area:'Gangnam'}, ja:{city:'ソウル',area:'カンナム'}, ko:{city:'서울',area:'강남',cityP:'을',areaP:'을'}}
+};
+var AREA = AREAS[FLOW] || AREAS.a;
+/* the ad's three screenshots, cut from their App Store screenshots 10, 3 and 7 (the app UI is the same on every storefront);
+   captions in the phone's language: the city line is ours, the other two are their own listing headings */
+var SHOTS = [['assets/crop/ad-photo.jpg','as.c1','50% 18%','dk'],['assets/crop/ad-plan.jpg','as.c2','50% 0%',''],['assets/crop/ad-rivals.jpg','as.c3','50% 0%','']];
+
+/* ================= state (EDIT defaults(): answers pre-filled, so a step jump lands mid-flow) ================= */
+function defaults(){ return { lang:S0.lang, theme:S0.theme, mode:'run', goal:'turf', plan:'year', ter:false }; }
+/* a phone with no &lang starts in its keyword's language (ja for flow a, ko for flow b) */
+var S0 = {lang:(EMBED && META.kw[FLOW] && META.kw[FLOW].lang) || 'en', theme:'light'};
+var S = defaults();
+function L(){ return LANGS.indexOf(S.lang); }
+function CTX(){ var a=AREA[S.lang]||AREA.en, o={cityP:'',areaP:''};
+  [PR[S.lang]||PR.en, a].forEach(function(src){ Object.keys(src).forEach(function(k){ o[k]=src[k]; }); });
+  o.V=(MV[S.lang]||MV.en)[S.mode]; return o; }
+function t(k,v){ var s=(T[k]||[k])[L()], c=CTX(); if(v) Object.keys(v).forEach(function(x){ c[x]=v[x]; });
+  return String(s).replace(/\{(\w+)\}/g,function(m,x){ return x in c ? c[x] : m; }); }
+
+/* ================= builders (re-run on language change) ================= */
+function buildShots(){ document.getElementById('asShots').innerHTML=SHOTS.map(function(x){
+  return '<div class="as-shot '+(x[3]||'')+'"><img src="'+x[0]+'" alt="" style="object-position:'+x[2]+'"><b>'+t(x[1])+'</b></div>'; }).join(''); }
+function buildRating(){ var r=SR[S.lang]||SR.en;
+  document.getElementById('asRt').innerHTML='<span class="as-st">★★★★★<i style="width:'+(r[0]/5*100).toFixed(1)+'%">★★★★★</i></span>'+r[1]; }
+function applyStatic(){
+  document.documentElement.lang=S.lang;
+  document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent=t(el.dataset.t); });
+  document.querySelectorAll('[data-th]').forEach(function(el){ el.innerHTML=t(el.dataset.th); });
+  buildShots(); buildRating();
+  document.getElementById('asKw').textContent=KW;
+  document.getElementById('asGet').classList.remove('open');
+}
+
+/* ================= everything downstream reads S ================= */
+var CARD_ORDER = {turf:['rp','lb','en'], world:['lb','en','rp'], prizes:['en','lb','rp'], club:['lb','en','rp']};
+function syncScreen(){
+  document.querySelectorAll('[data-mode]').forEach(function(b){ b.classList.toggle('on', b.dataset.mode===S.mode); });
+  document.querySelectorAll('[data-goal]').forEach(function(b){ b.classList.toggle('on', b.dataset.goal===S.goal); });
+  document.querySelectorAll('[data-plan]').forEach(function(b){ b.classList.toggle('on', b.dataset.plan===S.plan); });
+  document.getElementById('terTog').classList.toggle('on', S.ter);
+  document.getElementById('planT').innerHTML=t('p_t');
+  document.getElementById('claimH').innerHTML=t('claimH.'+S.goal);
+  document.getElementById('claimS').innerHTML=t('claimS.'+S.goal);
+  document.getElementById('claimM').textContent=(MM[S.lang]||MM.en)[S.mode];
+  document.getElementById('payH').innerHTML=t('payH.'+S.goal);
+  document.getElementById('payCta').textContent=t(S.plan==='year'?'w_cy':'w_cm');
+  CARD_ORDER[S.goal].forEach(function(k,i){ var c=document.querySelector('[data-card="'+k+'"]'); if(!c) return;
+    c.style.order=i; c.classList.toggle('s-first', i===0); });
+}
+
+/* ================= router ================= */
+var ORDER=['search','intro','mode','goal','plan','claim','pro','paywall','offer','done'];
+var LABEL={search:'App Store',intro:'Welcome',mode:'Run or ride',goal:'How to play',plan:'First loop',claim:'Payoff',pro:'Pro',paywall:'Paywall',offer:'Offer on close',done:'Confirmed'};
+var scr={}, hist=[], cur='search';
+document.querySelectorAll('.scr').forEach(function(s){ scr[s.dataset.id]=s; });
+
+function chrome(){ var dark=S.theme==='dark', l=dark || !!scr[cur].dataset.light;
+  document.getElementById('sbar').classList.toggle('light',l); document.getElementById('homebar').classList.toggle('light',l); }
+function tell(m){ if(EMBED && window.parent!==window){ m.flow=FLOW; window.parent.postMessage(m,'*'); } }
+function enter(id){ chrome(); paintChips(); paintPanel(); tell({ev:'screen',id:id});
+  if(id==='search') document.getElementById('asGet').classList.remove('open'),document.getElementById('asGet').textContent=t('as.get'); }
+function go(id,opts){
+  opts=opts||{}; if(id===cur) return;
+  var from=scr[cur], to=scr[id];
+  if(!opts.back) hist.push(cur);
+  if(from){ from.classList.remove('is-active');
+    if(!to.classList.contains('sheet') && !from.classList.contains('sheet')) from.classList.add('is-past'); }
+  if(to.classList.contains('sheet')) from.classList.add('is-active');
+  Object.keys(scr).forEach(function(k){ if(k!==id&&k!==cur) scr[k].classList.remove('is-active'); });
+  to.classList.remove('is-past'); to.classList.add('is-active');
+  cur=id; enter(id);
+}
+function back(){
+  if(!hist.length) return;
+  var prev=hist.pop();
+  scr[cur].classList.remove('is-active');
+  scr[prev].classList.remove('is-past'); scr[prev].classList.add('is-active');
+  cur=prev; enter(prev);
+}
+function jump(id){
+  var i=ORDER.indexOf(id);
+  Object.keys(scr).forEach(function(k){ scr[k].classList.add('nofx'); scr[k].classList.remove('is-active','is-past'); });
+  hist=ORDER.slice(0,i<0?0:i);
+  if(id==='offer') scr.paywall.classList.add('is-active');
+  scr[id].classList.add('is-active'); cur=id;
+  var sb=scr[id].querySelector('.scr-body'); if(sb) sb.scrollTop=0;
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    Object.keys(scr).forEach(function(k){ scr[k].classList.remove('nofx'); }); }); });
+  syncScreen(); enter(id);
+}
+var chipsBuilt=false;
+function paintChips(){
+  var c=document.getElementById('chips');
+  if(!chipsBuilt){ chipsBuilt=true;
+    ORDER.forEach(function(id){
+      var b=document.createElement('button'); b.className='chip'+(id==='offer'?' offer':''); b.textContent=LABEL[id];
+      b.dataset.id=id; b.onclick=function(){ stopDemo(); jump(id); }; c.appendChild(b);
+    });
+  }
+  c.querySelectorAll('.chip').forEach(function(b){ b.classList.toggle('on', b.dataset.id===cur); });
+}
+
+/* ================= wiring ================= */
+document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ if(!b.disabled) go(b.dataset.go); }); });
+document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click',back); });
+document.querySelectorAll('[data-mode]').forEach(function(b){ b.addEventListener('click',function(){ S.mode=b.dataset.mode; syncScreen();
+  setTimeout(function(){ if(cur==='mode') go('goal'); },170); }); });
+document.querySelectorAll('[data-goal]').forEach(function(b){ b.addEventListener('click',function(){ S.goal=b.dataset.goal; syncScreen();
+  setTimeout(function(){ if(cur==='goal') go('plan'); },170); }); });
+document.querySelectorAll('[data-plan]').forEach(function(b){ b.addEventListener('click',function(){ S.plan=b.dataset.plan; syncScreen(); }); });
+document.getElementById('terTog').addEventListener('click',function(){ S.ter=!S.ter; syncScreen(); });
+document.getElementById('payClose').addEventListener('click',function(){ go('offer'); });
+document.getElementById('payCta').addEventListener('click',function(){ go('done'); });
+document.getElementById('offerCta').addEventListener('click',function(){ go('done'); });
+document.getElementById('offNo').addEventListener('click',function(){ jump('intro'); });
+document.getElementById('asGet').addEventListener('click',function(){ var b=this; if(b.classList.contains('open')) return;
+  b.classList.add('open'); b.textContent=t('as.open'); setTimeout(function(){ if(cur==='search') go('intro'); },demo.on?420:650); });
+document.getElementById('dnCta').addEventListener('click',function(){ jump('intro'); });
+
+function setSeg(id,attr,val){ document.querySelectorAll('#'+id+' button').forEach(function(b){ b.classList.toggle('on', b.dataset[attr]===val); }); }
+function setLang(l){ if(LANGS.indexOf(l)<0) return; S.lang=l; S0.lang=l; setSeg('segLang','lang',l); applyStatic(); syncScreen(); paintPanel(); }
+function setTheme(th){ S.theme=th; S0.theme=th; document.getElementById('phoneIn').classList.toggle('dark',th==='dark'); chrome(); }
+document.querySelectorAll('#segLang button').forEach(function(b){ b.addEventListener('click',function(){ stopDemo(); setLang(b.dataset.lang); }); });
+
+/* ================= the 30-second walkthrough (engine; captions + taps in startDemo are EDIT) =================
+   Both phones run it at once; flow a's captions show in the host bar. ~30 s total, one caption per screen. */
+var demo={tok:0,on:false,t0:0,iv:null}, finger=document.getElementById('finger'), phoneIn=document.getElementById('phoneIn');
+function W(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
+function cap(txt){ document.getElementById('demoTxt').textContent=txt; if(FLOW==='a') tell({ev:'cap',txt:txt}); }
+async function tap(sel,tok){
+  if(demo.tok!==tok) throw 0;
+  var el=document.querySelector(sel); if(!el) return;
+  var r=el.getBoundingClientRect(), p=phoneIn.getBoundingClientRect(), z=p.width/phoneIn.offsetWidth||1;
+  finger.style.left=((r.left-p.left+r.width/2)/z)+'px'; finger.style.top=((r.top-p.top+r.height/2)/z)+'px';
+  finger.classList.add('show'); await W(380); if(demo.tok!==tok) throw 0;
+  finger.classList.add('press'); await W(120); finger.classList.remove('press'); el.click(); await W(160);
+  if(demo.tok!==tok) throw 0;
+}
+async function pause(ms,tok){ await W(ms); if(demo.tok!==tok) throw 0; }
+function startDemo(){
+  stopDemo(); var tok=++demo.tok; demo.on=true; demo.t0=Date.now();
+  var keep={lang:S.lang,theme:S.theme}; S=defaults(); S.lang=keep.lang; S.theme=keep.theme;
+  applyStatic(); jump('search');
+  if(!EMBED) document.getElementById('demoCap').classList.remove('hidden');
+  demo.iv=setInterval(function(){ document.getElementById('demoProg').style.width=Math.min(100,(Date.now()-demo.t0)/300)+'%'; },200);
+  (async function(){
+    try{
+      cap('One rival’s name, two markets: “kyro” in Japan, its Korean listing name in Korea.'); await pause(2300,tok);
+      await tap('#asGet',tok); await pause(700,tok);
+      cap('The first line answers the search in their language: claim Tokyo, or claim Seoul.'); await pause(2300,tok);
+      await tap('[data-id=intro] .s-cta',tok);
+      cap('Your activity sheet, word for word. Run.'); await pause(1000,tok);
+      await tap('[data-id=mode] [data-mode=run]',tok); await pause(500,tok);
+      cap('How they want to play, in your listing’s own words.'); await pause(1100,tok);
+      await tap('[data-id=goal] [data-goal=turf]',tok); await pause(500,tok);
+      cap('Their first loop before any price, labelled Shibuya in one phone and Gangnam in the other.'); await pause(2600,tok);
+      await tap('[data-id=plan] .s-savebtn',tok);
+      cap('The payoff says it back: your first block of Shibuya, or of Gangnam.'); await pause(2400,tok);
+      await tap('[data-id=claim] .s-cta',tok);
+      cap('Pro in the game’s own terms: 10x entries, complete leaderboards, the full planner.'); await pause(2400,tok);
+      await tap('[data-id=pro] .s-cta',tok);
+      cap('Yen in Japan, won in Korea: annual is ¥583 or ₩5,833 a month, 17% under monthly.'); await pause(2900,tok);
+      cap('They close it. One first-year price in their own currency, or keep playing free.'); await tap('#payClose',tok); await pause(2900,tok);
+      cap('That is both flows. The steps under the phones jump to any screen.');
+      finger.classList.remove('show'); await pause(2200,tok); stopDemo(); tell({ev:'demoEnd'});
+    }catch(e){}
+  })();
+}
+function stopDemo(){ if(!demo.on) return; demo.tok++; demo.on=false; clearInterval(demo.iv); finger.classList.remove('show','press');
+  document.getElementById('demoCap').classList.add('hidden'); }
+document.getElementById('demoBtn').addEventListener('click',startDemo);
+document.getElementById('demoStop').addEventListener('click',stopDemo);
+phoneIn.addEventListener('pointerdown',function(e){ if(e.isTrusted && demo.on){ stopDemo(); tell({ev:'demoStop'}); } });
+window.addEventListener('message',function(e){ var m=e.data||{}; if(!EMBED||!m.cmd) return;
+  if(m.cmd==='jump'){ stopDemo(); if(m.id!==cur) jump(m.id); }
+  if(m.cmd==='lang') setLang(m.v);
+  if(m.cmd==='theme') setTheme(m.v);
+  if(m.cmd==='demo') startDemo();
+  if(m.cmd==='stop') stopDemo();
+});
+</script>
+<script>
+/* ---- PANEL (EDIT): one entry per screen: the idea it carries, "Try X, because Y", the range, what was kept ----
+   ctx:true = context screen (no idea, no range). hyp2/n2/out2 = a second idea on the same screen. */
+var PANEL = {
+search:{ctx:true,t:'The App Store search',
+ kept:'Your ad as Apple shows it in that storefront: your name, your own subtitle and screenshots for that market.'},
+intro:{ctx:true,t:'Your line, your art',
+ kept:'Your own photo and INT_VL wordmark from your App Store screenshots, your green start button and your Geist Mono labels.'},
+mode:{ctx:true,t:'Run or ride',
+ kept:'Your activity sheet from App Store screenshot 4, word for word in English: “Choose your activity type”, Run / Walk, Bike / Ride, over your own globe. The answer carries into the loop, the payoff and the paywall.'},
+goal:{n:2,t:'Ask how they want to play, then say it back',
+ hyp:'Try asking how they want to play, in your listing’s own four ways, <b>because the answer decides the payoff headline, which Pro card leads and the paywall headline</b>. Pick “Win real prizes” and all three change.',
+ kept:'Your listing’s “Play it your way” wording, your rows with the light-green selected state, your progress bar and your italic display type.',
+ out:'CR +8–15%'},
+plan:{n:1,t:'Plan the first capture before the paywall',
+ hyp:'Try drawing one real loop in the player’s area during onboarding, with its distance and area, <b>because the full route planner is a headline Pro feature that nobody can value until they see it work on their own streets</b>.',
+ kept:'Your route planner from App Store screenshot 3: the white header with distance and capture, LOOP CLOSED, the tools row, the Territories toggle and your green SAVE button.',
+ out:'CR +10–20%'},
+claim:{n:2,t:'Say their answer back',
+ hyp:'Try naming what they picked (their area, the world stage, prizes or their club, run or ride) on the payoff and again in the paywall headline, <b>because a paywall that repeats the player’s own goal beats one generic Pro pitch</b>.',
+ kept:'Your loop, zoomed from your own screenshot, the “You” chip and the dark CONTINUE button.',
+ out:'CR +8–15%'},
+pro:{n:3,t:'Sell Pro in the game’s own terms',
+ hyp:'Try showing Free vs Pro on your own rivals bar, with the player’s goal first, <b>because “10x boost on competition entries” and “complete leaderboards” land harder in the game’s own units than as a feature list</b>.',
+ kept:'Your rivals bar from App Store screenshot 7 (grey to green), your card borders and Geist Mono labels. The three rows are the three Pro extras named on intvl.com.au.',
+ out:'CR +5–12%'},
+paywall:{n:4,t:'The saving and the proof, next to the button',
+ hyp:'Try leading with the monthly figure on annual, “save 17%”, your 4.7★ and 2.4M competitors beside the plans, <b>because the decision happens in a few seconds here, and a monthly figure makes annual the easy pick</b>.',
+ kept:'Your globe, wordmark, green plan selection and pill button.',
+ out:'ARPU +5–10%'},
+offer:{n:5,t:'Catch the close',
+ hyp:'Try one honest offer when someone closes the paywall, your real lower price as the first year, <b>because in a free-to-play game a close usually means “not now”, and hooked players take a better price</b>.',
+ kept:'Your dark sheet, green outline and the way back to playing free.',
+ out:'CR +4–8%'},
+done:{ctx:true,t:'Purchase confirmed',
+ kept:'Where the flow hands over to the app: the first loop is saved, so the first screen of the app is the map they just planned.'}
+};
+
+function outBlock(lab,val){
+  return '<div class="pn-out"><div class="lab">'+lab+'</div><div class="v">'+val+'</div></div>';
+}
+function paintPanel(){
+  var d=PANEL[cur]; if(!d) return;
+  var h='';
+  if(d.ctx){
+    h += '<div class="pn-n ctx">Context · no change proposed</div><h3 class="pn-t">'+d.t+'</h3>'
+       + '<div class="pn-kept">'+d.kept+'</div>';
+  } else {
+    h += '<div class="pn-n">Idea '+d.n+' of 5</div><h3 class="pn-t">'+d.t+'</h3>'
+       + '<p class="pn-hyp">'+d.hyp+'</p>'
+       + outBlock('Potential outcome · based on Adapty data', d.out);
+    h += '<div class="pn-kept"><b>Your design, unchanged.</b> '+d.kept+'</div>';
+  }
+  if(S.lang!=='en') h += '<div class="pn-kept"><b>Language.</b> Screens are shown in '+langName(S.lang)+'. '+META.langNote+'</div>';
+  h += '<div class="pn-foot">Ranges are Adapty’s expected effect from tests across 30,000+ subscription apps, not measured lift for '+META.app+'. '
+     + 'Prices, ratings and feature lines come from your own published material.</div>';
+  document.getElementById('panel').innerHTML = h;
+}
+
+
+/* ================= host: two phones, one step bar =================
+   P3 (EDIT): per screen. diff:true = the keyword flows differ here -> a / b cards {hyp, out, tag (hypothesis)}.
+   Screens without diff fall back to PANEL. note = one grey line under the cards. Engine below it. */
+var P3 = {
+search:{diff:true,t:'One rival’s name, two markets',
+ a:{hyp:'Someone in Japan typed “kyro”, the name of another territory app. <b>They want a running territory game, and they read Japanese.</b> The ad can open on a custom product page built from your Japan listing: your Japanese subtitle, your own Japanese headings as captions, and a first tile that names Tokyo.'},
+ b:{hyp:'Someone in Korea typed that app’s Korean listing name, “kyro: 영토 점령 러닝 게임”, word for word. <b>Same intent, different market:</b> your Korean subtitle and headings, and a first tile that names Seoul.'},
+ note:'Adapty reads the Apple Ads keyword when the app first opens and picks the matching flow. The rating here is each storefront’s own, as Apple shows it: 4.9 from 24 in Japan, 3.7 from 6 in Korea (4.7 from 5.4K in the US, under EN).'},
+intro:{diff:true,t:'Answer the search in the first line',
+ a:{hyp:'“Run a loop. Claim Tokyo.” in Japanese, with real prizes and clubs in the line under it, <b>because they searched for a running territory game, and your listing gives the app’s language as English only</b>.',out:'CR +5–10%'},
+ b:{hyp:'The same promise in Korean, with Seoul as the map, <b>because a runner in Seoul should not have to read English to learn the game is played on their own streets</b>.',out:'CR +5–10%'},
+ note:'Your photo, wordmark and button stay exactly as they are. Only the words change.'},
+mode:{note:'The same in both flows: the keyword says “territory game”, not run or ride. Under Local, each phone shows it in its own language.'},
+goal:{idea:2,note:'The same in both flows, with “Rule my suburb or city” picked when you jump here: the search says what game they want, not how they want to play it.'},
+plan:{diff:true,t:'The first capture, where they live',idea:1,
+ a:{hyp:'The loop is labelled Shibuya, Tokyo, and the coach line names it, <b>because a territory game only feels real on your own streets</b>.'},
+ b:{hyp:'Labelled Gangnam, Seoul. The same 3.93 km loop and 0.9 km² inside, the numbers on your own route-planner screenshot.'},
+ note:'The map is your own App Store screenshot (Melbourne). Shibuya and Gangnam are demo defaults: in the live flow the loop is drawn on the player’s own streets from their location.'},
+claim:{diff:true,t:'Say their goal back, in their area',idea:2,
+ a:{hyp:'“Your first block of Shibuya”, with the goal they picked and run or ride from the sheet, <b>so the payoff is about their game, not a generic Pro pitch</b>.'},
+ b:{hyp:'“Your first block of Gangnam”. Go back one screen and pick another goal: the headline changes in both phones.'}},
+pro:{note:'The same in both flows. The card that leads follows the goal they picked, not the keyword.'},
+paywall:{diff:true,t:'Their price, their area',idea:4,
+ a:{hyp:'“Rule Shibuya”, with ¥7,000 a year shown as ¥583 a month, 17% less than ¥700 monthly, <b>because a runner in Japan pays in yen on your Japan storefront</b>.',out:'ARPU +5–10%'},
+ b:{hyp:'“Rule Gangnam”, with ₩70,000 a year shown as ₩5,833 a month, 17% less than ₩7,000 monthly. <b>Korea has 6 ratings so far</b>, so the proof line uses your US rating and says so.',out:'ARPU +5–10%'},
+ note:'Prices follow the phone’s language: EN shows your US prices, JA Japan, KO Korea. “INTVL Annual Subscription” is ¥7,000 / ₩70,000 / US$79.99; the monthly plan (¥700 / ₩7,000 / US$7.99) is matched across storefronts by price ratio.'},
+offer:{diff:true,t:'One honest second chance, in their currency',idea:5,
+ a:{hyp:'Your ¥4,400 price, once, as the first year: ¥367 a month, 37% under ¥7,000, <b>or keep playing free</b>. No countdown, no inflated strikethrough.',
+   tag:'A ¥4,400 SKU is on your Japan listing. We assumed it is an annual price you can offer once as a first year; we haven’t seen it in your live flow.',out:'CR +4–8%'},
+ b:{hyp:'₩44,000 for the first year: ₩3,667 a month, 37% under ₩70,000, and the line under it names Gangnam.',
+   tag:'A ₩44,000 SKU is on your Korea listing. Same assumption as Japan: an annual price, offered once as a first year.',out:'CR +4–8%'}},
+done:{}
+};
+var IDEAS5 = META.ideas.map(function(x){ return [x.n, x.short||x.title, x.impact, x.screen]; });
+var H = {cur:{a:'search', b:'search'}, step:'search', ready:{}, demo:false, t0:0, iv:null, lang:'local', one:'a'};
+var KWI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>';
+function frames(){ return {a:document.querySelector('.flow.ka iframe'), b:document.querySelector('.flow.kb iframe')}; }
+function send(flow,m){ var f=frames()[flow]; if(f&&f.contentWindow) f.contentWindow.postMessage(m,'*'); }
+function sendBoth(m){ send('a',m); send('b',m); }
+function hostJump(id){ hostStopDemo(true); H.cur.a=H.cur.b=id; sendBoth({cmd:'jump',id:id}); setStep(id); }
+function setStep(id){ H.step=id; paintSteps(); paintHostPanel(); }
+function paintSteps(){
+  var c=document.getElementById('hSteps');
+  if(!c.childElementCount) ORDER.forEach(function(id){ var b=document.createElement('button'); b.className='step'+(P3[id]&&P3[id].diff?' diff':'');
+    b.textContent=LABEL[id]; b.dataset.id=id; b.title=P3[id]&&P3[id].diff?'The two flows differ on this screen':'Same in both flows';
+    b.onclick=function(){ hostJump(id); }; c.appendChild(b); });
+  c.querySelectorAll('.step').forEach(function(b){ b.classList.toggle('on',b.dataset.id===H.step); });
+}
+function kcard(flow,d){
+  var kw='“'+META.kw[flow].q+'” · '+META.kw[flow].short;
+  var h='<div class="kc '+flow+'"><div class="kk">'+KWI+kw+'</div><p>'+d.hyp+'</p>';
+  if(d.tag) h+='<span class="hyptag"><b>Hypothesis</b>'+d.tag+'</span>';
+  if(d.out!==undefined) h+='<div class="ko"><span>Potential outcome</span>'+(d.out?'<b>'+d.out+'</b>':'<b class="nc">No change</b>')+'</div>';
+  return h+'</div>';
+}
+function langLine(){
+  if(H.lang==='local') return '<div class="pn-kept"><b>Language · Local.</b> Each phone speaks its searcher’s language: Japanese for “'+META.kw.a.q+'”, Korean for “'+META.kw.b.q+'”. '+META.langNote+'</div>';
+  return '<div class="pn-kept"><b>Language.</b> Both phones are shown in '+langName(H.lang)+'. '+META.langNote+'</div>';
+}
+function paintHostPanel(){
+  var id=H.step, d=P3[id]||{}, b=PANEL[id]||{}, h='';
+  var here=d.diff?[d.idea,d.idea2]:[b.n,b.n2]; here=here.filter(Boolean);
+  h+='<details class="sh"><summary><div class="top"><span class="lab"><small>Built into both flows</small>The 5 ideas from the audit</span>'
+    +'<span class="more"><span class="o">Show all ▾</span><span class="c">Hide ▴</span></span></div><div class="lit">';
+  IDEAS5.forEach(function(x){ h+='<button class="'+(here.indexOf(x[0])>-1?'on':'')+'" data-go="'+x[3]+'" title="'+x[1]+'">0'+x[0]+'</button>'; });
+  h+='<span>'+(here.length?'Lit = on this screen':'None on this screen')+'</span></div></summary><ol>';
+  IDEAS5.forEach(function(x){ h+='<li class="'+(here.indexOf(x[0])>-1?'on':'')+'" data-go="'+x[3]+'"><span class="n">0'+x[0]+'</span><span class="t">'+x[1]+'</span><span class="o">'+x[2]+'</span></li>'; });
+  h+='</ol></details>';
+  if(d.diff){
+    h+='<div class="pn-badge"><i></i>'+LABEL[id]+' · differs by keyword</div><h3 class="pn-t">'+d.t+'</h3>';
+    h+=kcard('a',d.a)+kcard('b',d.b);
+    if(d.note) h+='<div class="pn-note">'+d.note+'</div>';
+    if(d.idea){ h+='<div class="pn-also"><div class="lab">Also on this screen, in both flows</div>';
+      [d.idea,d.idea2].filter(Boolean).forEach(function(n){ var x=IDEAS5[n-1]; h+='<div class="row"><span>Idea '+n+' · '+x[1]+'</span><span class="o">'+x[2]+'</span></div>'; });
+      h+='</div>'; }
+  } else if(b.ctx){
+    h+='<div class="pn-badge same"><i></i>'+LABEL[id]+' · same in both flows</div><h3 class="pn-t">'+b.t+'</h3><div class="pn-kept">'+b.kept+'</div>';
+    if(d.note) h+='<div class="pn-note">'+d.note+'</div>';
+  } else {
+    h+='<div class="pn-badge same"><i></i>'+LABEL[id]+' · same in both flows</div>';
+    h+='<div class="pn-n" style="margin-top:14px">Idea '+b.n+' of 5</div><h3 class="pn-t">'+b.t+'</h3><p class="pn-hyp">'+b.hyp+'</p>'
+      +outBlock('Potential outcome · based on Adapty data',b.out);
+    if(d.note) h+='<div class="pn-note">'+d.note+'</div>';
+    h+='<div class="pn-kept"><b>Your design, unchanged.</b> '+b.kept+'</div>';
+  }
+  if(H.lang!=='en') h+=langLine();
+  h+='<div class="pn-foot">Ranges are Adapty’s expected effect from tests across 30,000+ subscription apps, not measured lift for '+META.app+'. Prices, ratings and feature lines come from your own published material. Shown in light mode only: we haven’t seen INTVL in dark mode.</div>';
+  var p=document.getElementById('hPanel'); var wasOpen=p.querySelector('details.sh[open]'); p.innerHTML=h;
+  if(wasOpen) p.querySelector('details.sh').open=true;
+  p.querySelectorAll('.sh [data-go]').forEach(function(el){ el.onclick=function(e){ e.preventDefault(); e.stopPropagation(); hostJump(el.dataset.go); }; });
+}
+function hostSeg(attr,v){ document.querySelectorAll('[data-h'+attr+']').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-h'+attr)===v); }); }
+function hostLang(v){ H.lang=v; hostSeg('lang',v);
+  if(v==='local'){ send('a',{cmd:'lang',v:META.kw.a.lang}); send('b',{cmd:'lang',v:META.kw.b.lang}); }
+  else sendBoth({cmd:'lang',v:v});
+  paintHostPanel(); }
+document.querySelectorAll('[data-hlang]').forEach(function(b){ b.addEventListener('click',function(){ hostLang(b.dataset.hlang); }); });
+function hostDemo(){
+  if(!(H.ready.a&&H.ready.b)){ setTimeout(hostDemo,150); return; }
+  hostStopDemo(true); H.demo=true; H.t0=Date.now(); H.cur.a=H.cur.b='search'; setStep('search');
+  document.getElementById('hSteps').classList.add('hidden'); document.getElementById('hCap').classList.remove('hidden');
+  document.getElementById('hCapT').textContent='';
+  H.iv=setInterval(function(){ document.getElementById('hProg').style.width=Math.min(100,(Date.now()-H.t0)/300)+'%'; },200);
+  sendBoth({cmd:'demo'});
+}
+function hostStopDemo(quiet){
+  if(!H.demo) return; H.demo=false; clearInterval(H.iv);
+  document.getElementById('hSteps').classList.remove('hidden'); document.getElementById('hCap').classList.add('hidden');
+  if(!quiet) sendBoth({cmd:'stop'});
+}
+document.getElementById('hStop').addEventListener('click',function(){ hostStopDemo(); });
+document.querySelectorAll('[data-hdemo]').forEach(function(b){ b.addEventListener('click',hostDemo); });
+window.addEventListener('message',function(e){
+  var m=e.data||{}; if(EMBED||!m.ev||!m.flow) return;
+  var other=m.flow==='a'?'b':'a';
+  if(m.ev==='screen'){ var was=H.ready.a&&H.ready.b; H.ready[m.flow]=true; H.cur[m.flow]=m.id;
+    if(!was&&H.ready.a&&H.ready.b){ var sp=(location.search.match(/[?&]step=(\w+)/)||[])[1]; if(sp&&ORDER.indexOf(sp)>-1){ hostJump(sp); return; } }
+    if(!H.demo && H.cur[other]!==m.id){ H.cur[other]=m.id; send(other,{cmd:'jump',id:m.id}); }
+    if(m.id!==H.step) setStep(m.id); }
+  if(m.ev==='cap') document.getElementById('hCapT').textContent=m.txt;
+  if(m.ev==='demoEnd') hostStopDemo(true);
+  if(m.ev==='demoStop') hostStopDemo();
+});
+/* mobile: one phone at a time */
+document.querySelectorAll('#mtog button').forEach(function(b){ b.addEventListener('click',function(){
+  H.one=b.dataset.one; document.querySelectorAll('#mtog button').forEach(function(x){ x.classList.toggle('on',x===b); });
+  document.querySelectorAll('.duo .flow').forEach(function(f){ f.classList.toggle('show',f.dataset.flow===H.one); }); fit(); }); });
+document.getElementById('drawerBtn').addEventListener('click',function(){ document.body.classList.toggle('drawer'); });
+/* phones scale to the window: always one screen, no scrolling */
+function fit(){
+  if(EMBED) return;
+  var p3=document.getElementById('p3'), st=document.getElementById('p3Stage'), duo=document.getElementById('duo');
+  if(!document.getElementById('view-proto').classList.contains('on')) return;
+  var W=st.clientWidth-40, mobile=innerWidth<760, s;
+  if(mobile){
+    p3.className='p3 top one';
+    var Hm=innerHeight-58-14-50-56-(document.querySelector('.p3-mtools').offsetHeight||0)-110;
+    s=Math.min(1,(W+16)/390);
+  } else {
+    var Hs=duo.clientHeight-4;
+    var sSide=Math.min(1,Hs/844,(W-2*188-3*22)/(2*390));
+    var sTop=Math.min(1,(Hs-42)/844,(W-22)/(2*390));
+    var side=sSide>=sTop-0.01; p3.className='p3 '+(side?'side':'top'); s=side?sSide:sTop;
+  }
+  s=Math.max(.42,s);
+  document.querySelectorAll('.pbox').forEach(function(p){ p.style.width=Math.round(390*s)+'px'; p.style.height=Math.round(844*s)+'px';
+    p.firstElementChild.style.transform='scale('+s+')'; });
+  p3.dataset.scale=Math.round(s*100);
+}
+addEventListener('resize',fit);
+
+/* ---- views, jumps from the overview ---- */
+function showView(v){
+  if(v!=='proto'){ stopDemo(); if(!EMBED) hostStopDemo(); document.body.classList.remove('drawer'); }
+  document.body.classList.toggle('proto',v==='proto' && !EMBED);
+  document.querySelectorAll('.view').forEach(function(x){ x.classList.remove('on'); });
+  document.getElementById('view-'+v).classList.add('on');
+  document.querySelectorAll('.nav-links button[data-view]').forEach(function(b){ b.classList.toggle('on', b.dataset.view===v); });
+  window.scrollTo(0,0);
+  if(v==='proto') requestAnimationFrame(fit);
+}
+document.querySelectorAll('[data-view]').forEach(function(b){ b.addEventListener('click',function(){ showView(b.dataset.view); }); });
+document.querySelectorAll('.idea[data-jump]').forEach(function(b){
+  b.addEventListener('click',function(){ showView('proto'); hostJump(b.dataset.jump); });
+});
+document.querySelectorAll('[data-kwjump]').forEach(function(b){
+  b.addEventListener('click',function(){ showView('proto'); hostJump(b.dataset.kwjump); });
+});
+document.querySelectorAll('[data-demo]').forEach(function(b){ b.addEventListener('click',function(){ showView('proto'); hostDemo(); }); });
+
+applyStatic();
+scr.search.classList.add('is-active');
+syncScreen(); chrome(); paintChips(); paintPanel();
+if(/[?&](open=proto|embed)/.test(location.search)) showView('proto');
+if(!EMBED){ paintSteps(); paintHostPanel(); fit(); }
+else if(window.parent===window){  /* a lone phone (shoot.sh): &lang= forces a language, else the keyword's own; &step= */
+  var lg0=(location.search.match(/[?&]lang=(\w+)/)||[])[1]; if(lg0&&LANGS.indexOf(lg0)>-1) setLang(lg0);
+  var st0=(location.search.match(/[?&]step=(\w+)/)||[])[1]; if(st0&&scr[st0]&&st0!==cur) jump(st0);
+} else {
+  var lg1=(location.search.match(/[?&]lang=(\w+)/)||[])[1]; if(lg1&&LANGS.indexOf(lg1)>-1) setLang(lg1);
+  tell({ev:'screen',id:cur});
+}
+
+/* ---- ?selfcheck: the page audits its own wiring; asa-check.py reads the result off <body data-selfcheck> ---- */
+function selfCheck(){
+  var E=[], W=[], n=LANGS.length, has=function(o,k){ return Object.prototype.hasOwnProperty.call(o,k); };
+  Object.keys(T).forEach(function(k){ if(!Array.isArray(T[k])||T[k].length!==n) E.push('copy: T["'+k+'"] has '+(Array.isArray(T[k])?T[k].length:'no')+' entries for '+n+' languages'); });
+  ['a','b'].forEach(function(f){ Object.keys(FT[f]||{}).forEach(function(k){
+    if(!Array.isArray(FT[f][k])||FT[f][k].length!==n) E.push('copy: FT.'+f+'["'+k+'"] has '+(FT[f][k]||[]).length+' entries for '+n+' languages');
+    if(!has(T,k)) W.push('copy: FT.'+f+' overrides "'+k+'", which T does not define (the other flow shows the key name)'); }); });
+  document.querySelectorAll('[data-t],[data-th]').forEach(function(el){ var k=el.dataset.t||el.dataset.th; if(!has(T,k)) E.push('copy: data-t "'+k+'" is not in T'); });
+  var ids=Object.keys(scr);
+  ORDER.forEach(function(id){ if(!scr[id]) E.push('screens: ORDER names "'+id+'" but no <section data-id="'+id+'">'); if(!LABEL[id]) E.push('screens: LABEL has no "'+id+'"'); });
+  ids.forEach(function(id){ if(ORDER.indexOf(id)<0) W.push('screens: <section data-id="'+id+'"> is not in ORDER (unreachable from the step bar)'); });
+  if(ORDER[0]!=='search') E.push('screens: the flow must open on the App Store search screen ("search")');
+  var shown={};
+  ORDER.forEach(function(id){ var p=PANEL[id], d=P3[id]||{};
+    if(d.diff){
+      ['a','b'].forEach(function(f){ if(!d[f]||!d[f].hyp) E.push('panel: P3.'+id+' differs by keyword but has no '+f+'.hyp'); });
+      if(!d.t) E.push('panel: P3.'+id+' needs a title (t)');
+      [d.idea,d.idea2].forEach(function(x){ if(x) shown[x]=1; });
+    } else if(!p && id!=='search') E.push('panel: no PANEL.'+id+' and no P3.'+id+'.diff (the panel would be empty)');
+    if(p && !p.ctx){
+      if(!(p.n>=1&&p.n<=5)) E.push('panel: PANEL.'+id+'.n must be an idea number 1-5'); else shown[p.n]=1;
+      if(p.n2) shown[p.n2]=1;
+      if(!/\btry\b/i.test(p.hyp||'')||!/because/.test(p.hyp||'')) W.push('panel: PANEL.'+id+'.hyp should read "Try X, <b>because Y</b>"');
+      var words=(p.hyp||'').replace(/<[^>]+>/g,'').split(/\s+/).length; if(words>60) W.push('panel: PANEL.'+id+'.hyp is '+words+' words (keep it under ~55)');
+      if(!p.out) E.push('panel: PANEL.'+id+' has no potential outcome (out)');
+    }
+  });
+  if(META.ideas.length!==5) E.push('meta: '+META.ideas.length+' ideas -- the page promises five');
+  META.ideas.forEach(function(x,i){ if(x.n!==i+1) E.push('meta: ideas must be numbered 1-5 in order'); if(!scr[x.screen]) E.push('meta: idea '+x.n+' opens "'+x.screen+'", which is not a screen');
+    if(!shown[x.n]) W.push('meta: idea '+x.n+' is not lit on any screen (PANEL n/n2 or P3 idea/idea2)'); });
+  var rows=META.kwRows.map(function(r){ return r.screen; });
+  rows.forEach(function(s){ if(!scr[s]) E.push('meta: kwRows names "'+s+'", which is not a screen'); else if(!(P3[s]&&P3[s].diff)) W.push('meta: kwRows lists "'+s+'" but P3.'+s+' is not diff:true'); });
+  ORDER.forEach(function(id){ if(P3[id]&&P3[id].diff&&rows.indexOf(id)<0) W.push('meta: P3.'+id+' differs by keyword but is missing from kwRows'); });
+  ['a','b'].forEach(function(f){ var k=META.kw[f]||{}; ['q','short','who'].forEach(function(x){ if(!k[x]) E.push('meta: kw.'+f+'.'+x+' is empty'); }); });
+  if(!/^https:\/\/[\w-]+\.github\.io\/[\w.-]+\/$/.test(META.liveUrl||'')) W.push('meta: liveUrl should be https://<owner>.github.io/<repo>/ (publish-gh.sh refuses a mismatch)');
+  document.body.setAttribute('data-selfcheck',JSON.stringify({errors:E,warnings:W}));
+  return {errors:E,warnings:W};
+}
+if(!EMBED && /[?&]selfcheck/.test(location.search)) selfCheck();
+</script>
+</body>
+</html>
